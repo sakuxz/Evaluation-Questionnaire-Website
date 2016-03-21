@@ -47,9 +47,11 @@ body {
       height: 130px;
       overflow: hidden;
       border: 2px solid white;
+      line-height: 120px;
     }
     .photo img {
       width: 100%;
+      vertical-align: middle;
     }
     .photo:nth-child(4) {
       width: 30%;
