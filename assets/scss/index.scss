@@ -1,3 +1,223 @@
-body{
+body {
   background: #F1F1F1;
+}
+.ui.secondary.menu {
+  margin: 0;
+  background: #CA2A2A;
+  padding: 3px;
+  a.item.title {
+    font-family: 'Lobster', cursive;
+    padding: 0;
+    font-size: 1.7em;
+    margin-left: 0.8em;
+    color: white;
+  }
+  a.item.title:hover {
+    color: #FFFFFF;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.49);
+  }
+  a.item,
+  a.item:hover {
+    color: white;
+  }
+  a.item.solid {
+    background: #D84A4A;
+    box-shadow: 0 3px rgba(0, 0, 0, 0.24);
+    padding: 0.6em 0.8em;
+    transition: box-shadow 0.2s;
+  }
+  a.item.solid:active {
+    box-shadow: none;
+  }
+}
+.ui.container {
+  background: rgb(253,253,253);
+  overflow: hidden;
+  padding-bottom: 3em;
+  .banner {
+    overflow: hidden;
+    #map {
+      width: 70%;
+      height: 300px;
+      float: left;
+    }
+    .photo {
+      width: 15%;
+      float: left;
+      height: 130px;
+      overflow: hidden;
+      border: 2px solid white;
+    }
+    .photo img {
+      width: 100%;
+    }
+    .photo:nth-child(4) {
+      width: 30%;
+      height: 170px;
+      border-top: none;
+    }
+  }
+  .header {
+    clear: left;
+    width: 75%;
+    margin: 2em auto;
+    
+    //margin: 2em 1em;
+    //padding-left: 1.8em;
+    .content {
+      font-size: 1.3em;
+      font-family: "微軟正黑體";
+      font-weight: 400;
+      padding-left: 0.8em;
+      .sub.header {
+        line-height: 1.6em;
+        margin-top: 6px;
+        span {
+          font-size: 0.8em;
+          margin-right: 0.85em;
+        }
+        span:not(:first-child) {
+          padding-left: 1.5em;
+          margin-left: 1.5em;
+          margin-right: 0.3em;
+          border-left: 1px solid #D4C8C8;
+        }
+      }
+    }
+    i {
+      background: #52B5E0;
+      color: #FFFFFF;
+      border-radius: 20px;
+      padding: 0.6em;
+    }
+    img {
+      margin-right: 0.3em;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      transform: translateY(6px) rotate(16deg);
+      transition: transform 0.6s;
+    }
+    img.act {
+      transform: translateY(6px) rotate(-16deg);
+    }
+  }
+  .article-content {
+    font-family: "微軟正黑體";
+    font-size: 1.5em;
+    font-weight: 300;
+    width: 65%;
+    margin: auto;
+    img {
+      min-width: 58%;
+      max-width: 65%;
+      margin: 0.8em 1.2em 2em;
+      border-radius: 3px;
+    }
+  }
+  h3.sub-title {
+    margin-left: 15.3%;
+    margin-top: 3.2em;
+    font-family: "微軟正黑體";
+    font-weight: 400;
+    i {
+      background: #52B5E0;
+      color: #FFFFFF;
+      border-radius: 20px;
+      font-size: 1.5em;
+      vertical-align: middle;
+      margin-right: 0.33em;
+    }
+  }
+  
+  //h3.sub-title:after {
+  //  content: "";
+  //  display: block;
+  //  width: 10em;
+  //  border-bottom: 1px solid gray;
+  //  margin-top: 0.4333em;
+  //}
+  .store-profile {
+    width: 70%;
+    margin: 2em auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 14px 20px -4px #CCCCCC;
+    border-radius: 5px;
+    #sub-map {
+      width: 60%;
+      height: 300px;
+      float: left;
+    }
+    .info {
+      width: 40%;
+      background: white;
+      height: 300px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 100;
+      
+      //
+      background: #4186E6;
+      color: white;
+      .favorite {
+        position: absolute;
+        z-index: 1000;
+        top: 36%;
+        left: -36px;
+        background: #FFEB3B;
+        font-size: 1.5em;
+        padding: 0.55em 0.4em;
+        line-height: 1;
+        border-radius: 50%;
+        color: white;
+        box-shadow: 0 2px 3px #737373;
+        color: #696969;
+      }
+      div {
+        font-family: "微軟正黑體";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        padding: 1.6em;
+        padding-left: 2.2em;
+        h2 {
+          margin: 1.2em 0 1em;
+          color: #CA2A2A;
+          font-family: "微軟正黑體";
+          
+          //
+          color: rgba(255, 255, 255, 1);
+        }
+        h2.inverted {
+          color: rgba(255, 255, 255, 0.58);
+          text-shadow: 0 1px 3px #424242;
+        }
+        .ui.label {
+          margin: 1em;
+          
+          //background-color: #1C6FAD!important;
+        }
+        .ui.label.blue:before {
+          
+          //border-bottom-right-radius: 6px;
+        }
+      }
+    }
+    .info:before {
+      content: "";
+      position: absolute;
+      height: 150%;
+      width: 50%;
+      background: white;
+      z-index: 50;
+      transform: rotate(6deg);
+      transform-origin: 0 0;
+      
+      //
+      background: #4186E6;
+    }
+  }
 }

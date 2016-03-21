@@ -1,4 +1,3 @@
-require('index.scss');
 
 var center = {
   lat:  24.078979,

@@ -10,36 +10,96 @@
   <!-- Site Properities -->
   <title>title</title>
   <link rel="stylesheet" href="build/semantic.min.css" />
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="build/bundle/index.css" />
 
 </head>
 
 <body>
-  <div class="ui inverted segment">
-  <div class="ui inverted secondary menu">
-    <a class="active item">
-      Home
+  <div class="ui secondary  menu">
+    <a class="active item title">
+      IPEEN
     </a>
-    <a class="item">
-      Messages
-    </a>
-    <a class="item">
-      Friends
-    </a>
-
     <div class="right menu">
-   <div class="item">
-     <div class="ui icon input">
-       <input type="text" placeholder="Search...">
-       <i class="search link icon"></i>
-     </div>
-   </div>
-   <a class="ui item">
-     Logout
-   </a>
- </div>
+      <div class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search...">
+          <i class="search link icon"></i>
+        </div>
+      </div>
+      <a class="ui item solid">
+        <i class="add user icon"></i>註冊
+      </a>
+      <a class="ui item">
+        <i class="sign in icon"></i>登入
+      </a>
+    </div>
   </div>
-</div>
+
+  <div class="ui container">
+    <div class="banner">
+      <div id="map"></div>
+      <div class="photo">
+        <img src="./image/a.jpg">
+      </div>
+      <div class="photo">
+        <img src="./image/b.jpg">
+      </div>
+      <div class="photo">
+        <img src="./image/c.jpg">
+      </div>
+    </div>
+    <h2 class="ui header">
+      <i class="food icon"></i>
+      <div class="content">
+        [食記]彰化在地人才知道的必吃美食 - 彰香豆腐麵
+        <div class="sub header">
+          <span>推薦人 - </span>
+          <img src="./image/bebe.jpg">BeBe Lin
+          <span>評分 - </span>
+          <div class="ui star rating"></div>
+        </div>
+      </div>
+    </h2>
+
+    <div class="article-content">
+      <p>
+        彰香豆腐麵a彰香豆腐麵sd fsdfsdfds彰香豆腐麵fsdfsdf
+        <br>fdsfdsf彰香豆腐麵sd fdsfsdf
+      </p>
+      <img src="./image/a.jpg">
+      <p>
+        dsdasda彰香豆腐麵 fsdfsdfdsfsdfsdfsdfsdf
+        <br>fdsfdsfds彰香豆腐麵 fdsfsdf
+      </p>
+      <img src="./image/b.jpg">
+      <p>
+        dsdasd彰香豆腐麵sdasd fsdfsdf彰香豆腐麵fsdfsdfsdf
+        <br> fdsfdsfdsfdsfsd fdsfsdf
+      </p>
+      <img src="./image/c.jpg">
+      <p>
+        dsdasdasdasdasd fsdf彰香豆腐麵dfsdfsdfsdf
+        <br> fdsfdsfdsfdsfsd fdsfsdf
+      </p>
+    </div>
+
+    <h3 class="sub-title "><i class="info circle icon"></i>商家資訊</h3>
+
+    <div class="store-profile">
+      <div id="sub-map"></div>
+      <div class="info">
+        <a class="favorite" href="#"><i class="empty heart icon"></i></a>
+        <div>
+          <h2>彰香豆腐麵</h2>
+          <p><i class="marker icon"></i>彰化市彰化市實踐路147號</p>
+          <p><i class="phone icon"></i> 0900-000-000</p>
+          <p><i class="wait icon"></i>11:00~14:00 17:00~20:00 禮拜六公休</p>
+          <a class="ui yellow tag label">在地美食</a><a class="ui yellow tag label">養生健康</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="content-wrapper"></div>
 
@@ -47,7 +107,65 @@
 
 <script src="build/jquery-2.1.4.min.js"></script>
 <script src="build/semantic.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm3gODFIAHoqPN3RL_Z__d80hL-fD50YI&callback=initMap"></script>
 
 <script src="./build/bundle/index.js"></script>
+<script>
+  var center = {
+    lat: 24.083509,
+    lng: 120.556155
+  }
+
+  var map, map2;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: center,
+      zoom: 17,
+      draggable: false,
+      disableDefaultUI: false
+    });
+
+    map2 = new google.maps.Map(document.getElementById('sub-map'), {
+      center: center,
+      zoom: 15,
+      draggable: true,
+      disableDefaultUI: true
+    });
+
+
+    var marker = new google.maps.Marker({
+      map: map,
+      animation: google.maps.Animation.DROP,
+      // icon: {
+      //   path: google.maps.SymbolPath.CIRCLE,
+      //   fillColor: '#48b8ff',
+      //   fillOpacity: 0.7,
+      //   strokeColor: '#48b8ff',
+      //   strokeWeight: 15,
+      //   scale: 6
+      // },
+      // label: e.name,
+      position: center,
+      title: 'TFM',
+      labelInBackground: false
+    });
+
+    var marker = new google.maps.Marker({
+      map: map2,
+      animation: google.maps.Animation.DROP,
+      position: center,
+      title: 'TFM',
+      labelInBackground: false
+    });
+  }
+  $(function() {
+    $('.rating')
+      .rating({
+        initialRating: 5,
+        maxRating: 5
+      });
+  });
+</script>
 
 </html>

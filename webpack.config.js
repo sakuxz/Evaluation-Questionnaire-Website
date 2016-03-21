@@ -13,7 +13,7 @@ module.exports = {
   //輸出位置
   output: {
     path: path.resolve(__dirname, 'build', 'bundle'), //webpack 建置專案的路徑
-    publicPath: "http://localhost:3000/build/", //webpack 使用 require() 時參考的路徑
+    publicPath: "http://localhost:3000/build/bundle", //webpack 使用 require() 時參考的路徑
     filename: "[name].js"
   },
 
