@@ -1,5 +1,59 @@
+@import "./ani.scss";
 body {
   background: #F1F1F1;
+}
+a {
+  color: #EC3535;
+}
+a:hover {
+  color: #CA2A2A;
+}
+#question.button.fab {
+  position: fixed;
+  bottom: 2em;
+  right: 1.3em;
+  font-size: 1.55em;
+  background: #FFE926;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.18);
+  i {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.36);
+  }
+  div {
+    position: absolute;
+    left: -107px;
+    bottom: 8px;
+    background: white;
+    color: #525252;
+    font-size: 0.8em;
+    padding: 0.45em 0.6em;
+    border-radius: 4px;
+    border: 1px solid #CCCCCC;
+    width: auto;
+    font-weight: 400;
+    font-family: "微軟正黑體";
+  }
+  div:after {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    transform: rotate(45deg);
+    right: -8%;
+    top: 32%;
+    background: white;
+    border: 1px solid #CCCCCC;
+    border-left: none;
+    border-bottom: none;
+  }
+}
+#question.button.fab:active {
+  background: #F7E235;
+  box-shadow: none;
+}
+.ui.popup.left.center {
+  position: fixed;
+  display: block !important;
 }
 .ui.secondary.menu {
   margin: 0;
@@ -59,7 +113,7 @@ body {
       border-top: none;
     }
   }
-  .header {
+  > .header {
     clear: left;
     width: 75%;
     margin: 2em auto;
@@ -84,8 +138,28 @@ body {
           margin-right: 0.3em;
           border-left: 1px solid #D4C8C8;
         }
+        a {
+          margin-left: 0.35em;
+        }
       }
     }
+    
+    //.icon-wrapper {
+    //  background: #52B5E0;
+    //  color: #FFFFFF;
+    //  border-radius: 20px;
+    //  padding: 0.6em;
+    //  display: inline-block;
+    //  opacity: 1;
+    //  padding-top: 0.14285em;
+    //  vertical-align: middle;
+    //  i {
+    //    font-size: 1.5em;
+    //    margin-right: 0;
+    //    line-height: 1.75;
+    //    transform: rotate(12deg);
+    //  }
+    //}
     i {
       background: #52B5E0;
       color: #FFFFFF;
@@ -97,7 +171,7 @@ body {
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      transform: translateY(6px) rotate(16deg);
+      transform: translateY(6px); // rotate(16deg);
       transition: transform 0.6s;
     }
     img.act {
@@ -144,8 +218,12 @@ body {
     margin: 2em auto;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 14px 20px -4px #CCCCCC;
+    
+    //box-shadow: 0 9px 16px -2px #DCDCDC;
+    box-shadow: 0 10px 20px 5px #CCCCCC;
     border-radius: 5px;
+    transition: 0.35s all;
+    border-radius: 2px;
     #sub-map {
       width: 60%;
       height: 300px;
@@ -176,6 +254,11 @@ body {
         color: white;
         box-shadow: 0 2px 3px #737373;
         color: #696969;
+        transition: all 0.2s;
+      }
+      .favorite:active {
+        background: #F7E235;
+        box-shadow: none;
       }
       div {
         font-family: "微軟正黑體";
@@ -199,12 +282,12 @@ body {
         }
         .ui.label {
           margin: 1em;
-          
-          //background-color: #1C6FAD!important;
+          background-color: #C58358!important;
+          border-color: #a5673f!important;
         }
-        .ui.label.blue:before {
-          
-          //border-bottom-right-radius: 6px;
+        .ui.label:before {
+          background-color: #C58358!important;
+          border-color: #a5673f!important;
         }
       }
     }
@@ -213,13 +296,40 @@ body {
       position: absolute;
       height: 150%;
       width: 50%;
-      background: white;
+      background: inherit;
       z-index: 50;
       transform: rotate(6deg);
       transform-origin: 0 0;
-      
-      //
-      background: #4186E6;
     }
   }
+  
+  //.store-profile:hover {
+  //  box-shadow: 0 14px 20px -4px #C1C1C1;
+  //  transform: translateY(-2.5px);
+  //}
+}
+.ques-form {
+  width: 60%;
+  height: 75%;
+  background: white;
+  position: fixed;
+  top: 10%;
+  left: 20%;
+  border-radius: 2px;
+  box-shadow: 0 6px 12px 6px rgba(0, 0, 0, 0.19);
+  display: none;
+  padding: 3em;
+  z-index: 10000;
+  .fields {
+    margin: 1.6em 0;
+  }
+}
+.ques-form.open {
+  display: block;
+  animation: fadein 0.5s forwards;
+  animation-timing-function: ease-in-out;
+}
+.ques-form.close {
+  animation: fadeout 0.5s forwards;
+  animation-timing-function: ease-in-out;
 }

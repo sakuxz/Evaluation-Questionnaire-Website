@@ -1,0 +1,18 @@
+@keyframes fadein {
+  0% {
+    background: transparent;
+  }
+  100% {
+    background: white;
+  }
+}
+@keyframes fadeout {
+  0% {
+    background: white;
+    display: block;
+  }
+  100% {
+    background: transparent;
+    display: none;
+  }
+}

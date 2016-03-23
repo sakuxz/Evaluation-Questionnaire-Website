@@ -1,56 +1,62 @@
 require('index.scss');
 
-var center = {
-  lat:  24.078979,
-  lng: 120.553788
-}
+const React = require('react');
+const ReactDOM = require('react-dom');
 
-var markers = [];
-var map;
-
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: center,
-    zoom: 17,
-    draggable: false
-  });
-  //setPin(JSON.stringify(data));
-}
-
-function setPin(json) {
-  try {
-    map.setCenter({
-      lat: (dev_type === 'dev') ? 24.078979 : PlugIn.getLat(),
-      lng: (dev_type === 'dev') ? 120.553788 : PlugIn.getLng()
+var QuestionForm = React.createClass({
+  getInitialState: function() {
+    return {
+      data: {
+      }
+    };
+  },
+  render: function() {
+    return (
+      <div className="ques-form">
+        <div className="ui form">
+          <h4 className="ui dividing header">基本資料</h4>
+          <div className="fields">
+            <div className="field">
+              <label>名字</label>
+              <input type="text" placeholder="First Name"/>
+            </div>
+            <div className="field">
+              <label>姓氏</label>
+              <input type="text" placeholder="Middle Name"/>
+            </div>
+          </div>
+          <div className="inline fields">
+            <label for="fruit">Select your favorite fruit:</label>
+            <div className="field">
+              <div className="ui radio checkbox">
+                <input type="radio" name="fruit" checked="" tabindex="0" className="hidden"/>
+                <label>Apples</label>
+              </div>
+            </div>
+            <div className="field">
+              <div className="ui radio checkbox">
+                <input type="radio" name="fruit" tabindex="0" className="hidden"/>
+                <label>Oranges</label>
+              </div>
+            </div>
+            <div className="field">
+              <div className="ui radio checkbox">
+                <input type="radio" name="fruit" tabindex="0" className="hidden"/>
+                <label>Pears</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+  componentDidMount: function(){
+    $('.checkbox').checkbox();
+    $('.fields .field:nth-child(2) label').each(function(index, el) {
+      el.click();
     });
-    if (!json) return;
-    var data = JSON.parse(json);
-    markers.forEach(function(e, i) {
-      e.setVisible(false);
-    });
-    markers = [];
-    data.forEach(function(e, i) {
-      var marker = new google.maps.Marker({
-        map: map,
-        animation: google.maps.Animation.DROP,
-        icon: {
-          path: google.maps.SymbolPath.CIRCLE,
-          fillColor: '#48b8ff',
-          fillOpacity: 0.7,
-          strokeColor: '#48b8ff',
-          strokeWeight: 15,
-          scale: 6
-        },
-        label: e.name,
-        position: {
-          lat: e.latitude,
-          lng: e.longitude
-        },
-        title: 'Hello World!',
-        labelInBackground: false
-      });
-      markers.push(marker);
-    });
-  } catch (e) {}
+  }
+});
 
-}
+ReactDOM.render(
+  <QuestionForm/>, document.querySelector(".content-wrapper"));

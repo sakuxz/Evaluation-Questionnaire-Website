@@ -50,7 +50,9 @@
       </div>
     </div>
     <h2 class="ui header">
+      <!-- <span class="icon-wrapper"> -->
       <i class="food icon"></i>
+      <!-- </span> -->
       <div class="content">
         [食記]彰化在地人才知道的必吃美食 - 彰香豆腐麵
         <div class="sub header">
@@ -58,6 +60,8 @@
           <img src="./image/bebe.jpg">BeBe Lin
           <span>評分 - </span>
           <div class="ui star rating"></div>
+          <span>商家名稱 - </span>
+          <a href="#store-info">彰香豆腐麵</a>
         </div>
       </div>
     </h2>
@@ -86,20 +90,25 @@
 
     <h3 class="sub-title "><i class="info circle icon"></i>商家資訊</h3>
 
-    <div class="store-profile">
+    <div id="store-info" class="store-profile">
       <div id="sub-map"></div>
       <div class="info">
-        <a class="favorite" href="#"><i class="empty heart icon"></i></a>
+        <a class="favorite"><i class="empty heart icon"></i></a>
         <div>
           <h2>彰香豆腐麵</h2>
           <p><i class="marker icon"></i>彰化市彰化市實踐路147號</p>
           <p><i class="phone icon"></i> 0900-000-000</p>
           <p><i class="wait icon"></i>11:00~14:00 17:00~20:00 禮拜六公休</p>
-          <a class="ui yellow tag label">在地美食</a><a class="ui yellow tag label">養生健康</a>
+          <a class="ui brown tag label">在地美食</a><a class="ui brown tag label">養生健康</a>
         </div>
       </div>
     </div>
   </div>
+
+  <button id="question" class="yellow circular ui icon button fab">
+    <div>填寫問卷</div>
+    <i class="edit icon"></i>
+  </button>
 
   <div class="content-wrapper"></div>
 
@@ -107,7 +116,6 @@
 
 <script src="build/jquery-2.1.4.min.js"></script>
 <script src="build/semantic.min.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm3gODFIAHoqPN3RL_Z__d80hL-fD50YI&callback=initMap"></script>
 
 <script src="./build/bundle/index.js"></script>
 <script>
@@ -123,7 +131,10 @@
       center: center,
       zoom: 17,
       draggable: false,
-      disableDefaultUI: false
+      disableDefaultUI: false,
+      scrollwheel: false,
+      //mapTypeControl: false,
+      scaleControl: false
     });
 
     map2 = new google.maps.Map(document.getElementById('sub-map'), {
@@ -166,6 +177,18 @@
         maxRating: 5
       });
   });
+  $("#question").click(function(event) {
+    if ($(".ques-form").hasClass('open')) {
+      $(".ques-form").removeClass('open');
+      $(".ques-form").addClass('close');
+    } else {
+      $(".ques-form").removeClass('close');
+      $(".ques-form").addClass('open');
+    }
+  });
 </script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm3gODFIAHoqPN3RL_Z__d80hL-fD50YI&callback=initMap"></script>
+
 
 </html>

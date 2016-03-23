@@ -2,7 +2,7 @@
   "name": "Evaluation-Questionnaire-Website",
   "version": "1.0.0",
   "scripts": {
-    "install": "npm i webpack-dev-server -g && npm i webpack -g",
+    "postinstall": "npm i webpack-dev-server -g && npm i webpack -g",
     "dev": "webpack-dev-server --port 8000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

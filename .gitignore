@@ -1,3 +1,4 @@
 /node_modules
+/assets/js/*.js
 /build/bundle
 *.log
