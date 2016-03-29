@@ -345,6 +345,49 @@ a:hover {
     }
   }
 }
+div.pop-up {
+  position: fixed;
+  bottom: 3.8em;
+  right: 7.4em;
+  background: white;
+  color: #525252;
+  font-size: 0.8em;
+  padding: 0.45em 0.6em;
+  border-radius: 4px;
+  border: 1px solid #CCCCCC;
+  width: auto;
+  font-weight: 400;
+  font-family: "微軟正黑體";
+  font-size: 1em;
+}
+div.pop-up:after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  transform: rotate(45deg);
+  right: -8%;
+  top: 32%;
+  background: white;
+  border: 1px solid #CCCCCC;
+  border-left: none;
+  border-bottom: none;
+}
+div.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(53, 62, 66, 0);
+  transition: 0.5s background;
+  visibility: hidden;
+}
+div.mask.open {
+  background: rgba(53, 62, 66, 0.70);
+  visibility: visible;
+}
 #question.button.fab {
   position: fixed;
   bottom: 2em;
@@ -360,34 +403,6 @@ a:hover {
   transform: translateZ(0);
   i {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.36);
-  }
-  div.pop-up {
-    position: absolute;
-    left: -107px;
-    bottom: 8px;
-    background: white;
-    color: #525252;
-    font-size: 0.8em;
-    padding: 0.45em 0.6em;
-    border-radius: 4px;
-    border: 1px solid #CCCCCC;
-    width: auto;
-    font-weight: 400;
-    font-family: "微軟正黑體";
-  }
-  div.pop-up:after {
-    content: "";
-    display: block;
-    width: 12px;
-    height: 12px;
-    position: absolute;
-    transform: rotate(45deg);
-    right: -8%;
-    top: 32%;
-    background: white;
-    border: 1px solid #CCCCCC;
-    border-left: none;
-    border-bottom: none;
   }
   > div:first-child {
     display: block;
