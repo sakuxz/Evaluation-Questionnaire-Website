@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="overflow:hidden;">
 
 <head>
   <!-- Standard Meta -->
@@ -213,15 +213,6 @@
     var marker = new google.maps.Marker({
       map: map,
       animation: google.maps.Animation.DROP,
-      // icon: {
-      //   path: google.maps.SymbolPath.CIRCLE,
-      //   fillColor: '#48b8ff',
-      //   fillOpacity: 0.7,
-      //   strokeColor: '#48b8ff',
-      //   strokeWeight: 15,
-      //   scale: 6
-      // },
-      // label: e.name,
       position: center,
       title: 'TFM',
       labelInBackground: false
@@ -241,15 +232,6 @@
         initialRating: 5,
         maxRating: 5
       });
-  });
-  $("#question").click(function(event) {
-    if ($(".ques-form").hasClass('open')) {
-      $(".ques-form").removeClass('open');
-      $(".ques-form").addClass('close');
-    } else {
-      $(".ques-form").removeClass('close');
-      $(".ques-form").addClass('open');
-    }
   });
 </script>
 

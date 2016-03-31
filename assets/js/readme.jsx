@@ -21,9 +21,9 @@ export default React.createClass({
     );
   },
   componentDidMount: function() {
-    $('.checkbox').checkbox();
-    $('.fields .field:nth-child(2) label').each(function(index, el) {
-      el.click();
-    });
+    //$('.checkbox').checkbox();
+    // $('.fields .field:nth-child(2) label').each(function(index, el) {
+    //   el.click();
+    // });
   }
 });

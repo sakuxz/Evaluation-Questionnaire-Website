@@ -374,6 +374,9 @@ div.pop-up:after {
   border-left: none;
   border-bottom: none;
 }
+div.pop-up.flash {
+  animation: flash 2s 100000;
+}
 div.mask {
   position: fixed;
   top: 0;
@@ -452,6 +455,9 @@ div.mask.open {
     background: white;
     .ui.form {
       opacity: 1;
+      .field.hidd {
+        visibility: hidden;
+      }
     }
   }
 }
