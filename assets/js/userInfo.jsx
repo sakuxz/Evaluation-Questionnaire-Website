@@ -92,7 +92,7 @@ export default React.createClass({
             <div className="fields">
               <div className="field">
                 <label>名字</label>
-                <input type="text" placeholder="First Name" name="name"/>
+                <input type="text" placeholder="Name" name="name"/>
               </div>
               {/*<div className="field">
                 <label>姓氏</label>
@@ -120,10 +120,14 @@ export default React.createClass({
       return;
     }
 
-    $('html').css('overflow', 'initial');
+    $('html,body').css('overflow', 'initial');
+    if(navigator.userAgent.search('.NET4.0')!=-1){
+      $('html,body').css('overflow', 'auto');
+    }
     $('.rank').visibility({
       onTopVisible: function(calculations) {
         $('.pop-up').addClass('flash');
+        $('.pop-up').text('下一步')
       }
     });
 

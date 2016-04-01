@@ -28,15 +28,15 @@ var FloatingButton = React.createClass({
     var buttonClass = "yellow circular ui icon button fab";
     return (
     <div>
-        <button id="question" onClick={this.openQue} className={(this.state.open)?buttonClass+" open":buttonClass}>
+      <div id="question" onClick={this.openQue} className={(this.state.open)?buttonClass+" open":buttonClass}>
         <div>
           <i className="edit icon"></i>
         </div>
         {form}
-      </button>
+      </div>
 
       <div className="pop-up">填寫問卷</div>
-      <div className="mask" onClick={this.closeQue} className={(this.state.open)?"mask open":"mask"} ></div>
+      <div onClick={this.closeQue} className={(this.state.open)?"mask open":"mask"} ></div>
     </div>
     );
   },
