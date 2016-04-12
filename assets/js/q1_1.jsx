@@ -16,60 +16,34 @@ export default React.createClass({
             <h4 className="ui dividing header">在瀏覽完網站後，請根據你的實際感受據實回答</h4>
 
             <div className="inline fields">
-              <label>豆腐麵好吃嗎:</label>
+              <label>作者花了多少錢吃這一頓下午茶:</label>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" name="delicious" value="好吃" />
-                  <label>好吃</label>
+                  <input type="radio" name="money" value="700" />
+                  <label>700</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" name="delicious" value="普通" />
-                  <label>普通</label>
+                  <input type="radio" name="money" value="800" />
+                  <label>800</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" name="delicious" value="難吃" />
-                  <label>難吃</label>
+                  <input type="radio" name="money" value="900" />
+                  <label>900</label>
                 </div>
               </div>
               <div className="field hidd">
                 <div className="ui radio checkbox">
-                  <input type="radio" name="delicious" value="" defaultChecked='true' />
+                  <input type="radio" name="money" value="" defaultChecked='true' />
                   <label>null</label>
                 </div>
               </div>
             </div>
 
-            <div className="inline fields">
-              <label>豆腐麵開在哪裡:</label>
-              <div className="field">
-                <div className="ui radio checkbox">
-                  <input type="radio" name="plcce" value="彰化" />
-                  <label>彰化</label>
-                </div>
-              </div>
-              <div className="field">
-                <div className="ui radio checkbox">
-                  <input type="radio" name="plcce" value="台中" />
-                  <label>台中</label>
-                </div>
-              </div>
-              <div className="field">
-                <div className="ui radio checkbox">
-                  <input type="radio" name="plcce" value="員林" />
-                  <label>員林</label>
-                </div>
-              </div>
-              <div className="field hidd">
-                <div className="ui radio checkbox">
-                  <input type="radio" name="plcce" value="" defaultChecked='true' />
-                  <label>null</label>
-                </div>
-              </div>
-            </div>
+            <div className="ui submit button" onClick={this.checkQue} >下一步</div>
 
           </div>
         </form>
@@ -78,8 +52,29 @@ export default React.createClass({
   },
   componentDidMount: function() {
     $('.checkbox').checkbox();
-    // $('.fields .field:nth-child(2) label').each(function(index, el) {
-    //   el.click();
-    // });
+  },
+  checkQue: function () {
+    if($("input[name='money']:checked").val() === ""){
+      alert("答案未填完整");
+    }else if($("input[name='money']:checked").val() !== "900"){
+      setTimeout(function () {
+        this.props.closeQue();
+      }.bind(this),0);
+      alert("答案錯誤，請重看網頁內容在做填答");
+      $('.pop-up').removeClass('flash');
+      $('.pop-up').text('填寫問卷');
+      $("html,body").animate({
+  			scrollTop: 0
+  		}, 1200, 'swing', function () {
+        $('.rank').visibility({
+          onTopVisible: function(calculations) {
+            $('.pop-up').addClass('flash');
+            $('.pop-up').text('下一步')
+          }
+        });
+  		});
+    }else{
+      alert("答案正確");
+    }
   }
 });

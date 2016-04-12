@@ -398,6 +398,7 @@ div.mask {
   background: rgba(53, 62, 66, 0);
   transition: 0.5s background;
   visibility: hidden;
+  z-index: 1000;
 }
 div.mask.open {
   background: rgba(53, 62, 66, 0.70);

@@ -133,10 +133,13 @@ export default React.createClass({
 
     var data = $(this.refs.form).serializeObject();
     this.props.nextFlow(true);
-    if(data.sex === "男")
-      $("#test").text('情境'+Math.floor(Math.random()*5+1) );
-    else
-      $("#test").text('情境'+Math.floor(Math.random()*5+1) );
+    if(data.sex === "男"){
+      //$("#test").text('情境'+Math.floor(Math.random()*5+1) );
+    }
+    else{
+      //$("#test").text('情境'+Math.floor(Math.random()*5+1) );
+    }
+    open("/angry.html");
   },
   componentDidMount: function() {
     $('.checkbox').checkbox();

@@ -8,7 +8,8 @@ var WebpackErrorNotificationPlugin = require('webpack-error-notification');
 module.exports = {
   // bundle個體&其來源
   entry: {
-    'index': "./assets/js/index.jsx"
+    'index': "./assets/js/index.jsx",
+    'angry': "./assets/js/angry.jsx"
   },
   //輸出位置
   output: {
