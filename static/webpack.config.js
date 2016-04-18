@@ -66,7 +66,7 @@ module.exports = {
   devtool: 'source-map',
 
   // 自動在檔案變更時進行bundle
-  //watch: true,
+  watch: true,
 
   // 插件功能
   plugins: [

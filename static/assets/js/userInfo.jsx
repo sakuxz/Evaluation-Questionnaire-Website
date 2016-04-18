@@ -120,26 +120,26 @@ export default React.createClass({
       return;
     }
 
-    $('html,body').css('overflow', 'initial');
-    if(navigator.userAgent.search('.NET4.0')!=-1){
-      $('html,body').css('overflow', 'auto');
-    }
-    $('.rank').visibility({
-      onTopVisible: function(calculations) {
-        $('.pop-up').addClass('flash');
-        $('.pop-up').text('下一步')
-      }
-    });
+    // $('html,body').css('overflow', 'initial');
+    // if(navigator.userAgent.search('.NET4.0')!=-1){
+    //   $('html,body').css('overflow', 'auto');
+    // }
+    // $('.rank').visibility({
+    //   onTopVisible: function(calculations) {
+    //     $('.pop-up').addClass('flash');
+    //     $('.pop-up').text('下一步')
+    //   }
+    // });
 
     var data = $(this.refs.form).serializeObject();
-    this.props.nextFlow(true);
+    // this.props.nextFlow(true);
     if(data.sex === "男"){
       //$("#test").text('情境'+Math.floor(Math.random()*5+1) );
     }
     else{
       //$("#test").text('情境'+Math.floor(Math.random()*5+1) );
     }
-    open("/angry.html");
+    open("/angry.html","_self");
   },
   componentDidMount: function() {
     $('.checkbox').checkbox();

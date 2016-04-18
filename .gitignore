@@ -1,4 +1,4 @@
 /node_modules
-/assets/js/*.js
-/build/bundle
+/static/assets/js/*.js
+/static/build/bundle
 *.log
