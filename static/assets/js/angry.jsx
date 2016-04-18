@@ -7,6 +7,11 @@ const ReadMe = require('./readme');
 const UserInfo = require('./userInfo');
 const Q1_1 = require('./q1_1');
 
+if(localStorage.userData === undefined || localStorage.userData === "" )
+{
+  open("/","_self");
+}
+
 var FloatingButton = React.createClass({
   getInitialState: function() {
     return {
