@@ -5,7 +5,7 @@ const ReactDOM = require('react-dom');
 
 const ReadMe = require('./readme');
 const UserInfo = require('./userInfo');
-const Q1_1 = require('./q1_1');
+//const Q1_1 = require('./q1_1');
 
 var FloatingButton = React.createClass({
   getInitialState: function() {
@@ -22,7 +22,7 @@ var FloatingButton = React.createClass({
     }else if(this.state.flowAt === 1){
       form = <UserInfo nextFlow={this.nextFlow} />;
     }else if(this.state.flowAt === 2){
-      form = <Q1_1 nextFlow={this.nextFlow} />;
+      //form = <Q1_1 nextFlow={this.nextFlow} />;
     }
 
     var buttonClass = "yellow circular ui icon button fab";

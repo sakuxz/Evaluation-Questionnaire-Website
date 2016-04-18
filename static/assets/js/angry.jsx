@@ -5,7 +5,8 @@ const ReactDOM = require('react-dom');
 
 const ReadMe = require('./readme');
 const UserInfo = require('./userInfo');
-const Q1_1 = require('./q1_1');
+const Angry_q1 = require('./angry_q1');
+const Angry_q2 = require('./angry_q2');
 
 if(localStorage.userData === undefined || localStorage.userData === "" )
 {
@@ -27,13 +28,15 @@ var FloatingButton = React.createClass({
     }else if(this.state.flowAt === 1){
       form = <UserInfo nextFlow={this.nextFlow} />;
     }else if(this.state.flowAt === 2){
-      form = <Q1_1 closeQue={this.closeQue} nextFlow={this.nextFlow} />;
+      form = <Angry_q1 closeQue={this.closeQue} nextFlow={this.nextFlow} />;
+    }else if (this.state.flowAt === 3) {
+      form = <Angry_q2 closeQue={this.closeQue} nextFlow={this.nextFlow} />;
     }
 
     var buttonClass = "yellow circular ui icon button fab";
     return (
     <div>
-      <div id="question" onClick={this.openQue} className={(this.state.open)?buttonClass+" open":buttonClass}>
+      <div id="question" style={{maxHeight: '90%',overflow: 'auto'}} onClick={this.openQue} className={(this.state.open)?buttonClass+" open":buttonClass}>
         <div>
           <i className="edit icon"></i>
         </div>
