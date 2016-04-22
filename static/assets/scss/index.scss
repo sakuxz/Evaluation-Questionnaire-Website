@@ -470,6 +470,7 @@ div.mask.open {
       opacity: 1;
       .field.hidd {
         visibility: hidden;
+        width: 0;
       }
     }
   }

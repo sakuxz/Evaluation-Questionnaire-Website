@@ -6,7 +6,7 @@ var RadioGroup = React.createClass({
     var field = [];
     for(var i = 1;i<8;i++){
       field.push( (
-        <div className="field"  key={i} >
+        <div style={{display:'inline-block',marginRight:"1em"}} className="field" key={i} >
           <div className="ui radio checkbox">
             <input type="radio" name={this.props.data.name} value={i}/>
             <label>{i}</label>
@@ -15,10 +15,10 @@ var RadioGroup = React.createClass({
       ) );
     }
     return (
-      <div className="inline fields">
-        <label>{this.props.data.title}</label>
+      <div className="inline field">
+        <label style={{display:'block',margin: '1em 0 0.5em'}} >{this.props.data.title}</label>
         {field}
-        <div className="field hidd">
+        <div style={{display:'inline-block'}} className="field hidd">
           <div className="ui radio checkbox">
             <input type="radio" name={this.props.data.name} value="" defaultChecked='true' />
             <label>null</label>
@@ -61,7 +61,7 @@ export default React.createClass({
     return (
       <div className="ques-form">
 
-        <form>
+        <form ref='form'>
           <div className="ui form">
             <h4 className="ui dividing header">在瀏覽完網站後，請根據你的實際感受據實回答</h4>
 
@@ -81,28 +81,63 @@ export default React.createClass({
   componentDidMount: function() {
     $('.checkbox').checkbox();
   },
+  isSend: false,
   checkQue: function () {
-    if($("input[name='money']:checked").val() === ""){
-      alert("答案未填完整");
-    }else if($("input[name='money']:checked").val() !== "900"){
-      setTimeout(function () {
-        this.props.closeQue();
-      }.bind(this),0);
-      alert("答案錯誤，請重看網頁內容在做填答");
-      $('.pop-up').removeClass('flash');
-      $('.pop-up').text('填寫問卷');
-      $("html,body").animate({
-  			scrollTop: 0
-  		}, 1200, 'swing', function () {
-        $('.rank').visibility({
-          onTopVisible: function(calculations) {
-            $('.pop-up').addClass('flash');
-            $('.pop-up').text('下一步')
-          }
-        });
-  		});
-    }else{
-      alert("答案正確");
+    if(this.isSend){
+      return;
     }
+
+    var checked = true;
+    $(this.refs.form).serializeArray().forEach(function(e,i){
+      if(e.value === ""){
+        checked = false;
+      }
+    });
+    if(!checked){
+      alert("尚有欄位未填寫");
+      return;
+    }else{
+      this.isSend = true;
+
+      if(localStorage.userData === undefined || localStorage.userData === "" ){
+        open("/","_self");
+      }
+
+      var ans = $(this.refs.form).serializeArray();
+      var t = JSON.parse(localStorage.userData);
+      t.ans = ans;
+      t.situation = 'angry';
+      uploadAns(t).then(function() {
+        localStorage.removeItem("userData");
+        swal({
+            title: "Good job!",
+            text: "You finished the Questionnaire",
+            type: "success"
+        }, function() {
+            open("/","_self");
+        });
+      }, ()=> {
+        alert("網路錯誤，請重試");
+        this.isSend = false;
+      } );
+    }
+
   }
 });
+
+function uploadAns(data){
+  return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: '/ans',
+      type: 'POST',
+      data: {answer: JSON.stringify(data)}
+    })
+    .done(function(msg) {
+      resolve(msg)
+    })
+    .fail(function(e) {
+      reject(e);
+    });
+  });
+
+}

@@ -36,7 +36,7 @@ var FloatingButton = React.createClass({
     var buttonClass = "yellow circular ui icon button fab";
     return (
     <div>
-      <div id="question" style={{maxHeight: '90%',overflow: 'auto'}} onClick={this.openQue} className={(this.state.open)?buttonClass+" open":buttonClass}>
+      <div id="question" onClick={this.openQue} className={(this.state.open)?buttonClass+" open":buttonClass}>
         <div>
           <i className="edit icon"></i>
         </div>

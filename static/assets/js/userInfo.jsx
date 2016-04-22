@@ -31,8 +31,19 @@ export default React.createClass({
           <div className="ui form">
             <h4 className="ui dividing header">個人基本資料</h4>
 
+            <div className="fields">
+              <div className="field">
+                <label>名字</label>
+                <input type="text" placeholder="Name" name="name"/>
+              </div>
+              <div className="field">
+                <label>年齡</label>
+                <input type="number" placeholder="age" name="age"/>
+              </div>
+            </div>
+
             <div className="inline fields">
-              <label>1. 請問您的性別是 :</label>
+              <label>您的性別是 :</label>
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" name="sex" value="男" className="hidden"/>
@@ -54,50 +65,105 @@ export default React.createClass({
             </div>
 
             <div className="inline fields">
-              <label>2. 請問您的年齡是 :</label>
+              <label>每周上網時數 :</label>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" name="age"/>
-                  <label>18~24歲</label>
+                  <input type="radio" value="10" name="surf_time"/>
+                  <label>10小時</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" name="age"/>
-                  <label>25~29歲</label>
+                  <input type="radio" value="20" name="surf_time"/>
+                  <label>20小時</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" name="age"/>
-                  <label>30~34歲</label>
+                  <input type="radio" value="30" name="surf_time"/>
+                  <label>30小時</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" name="age"/>
-                  <label>34歲以上</label>
+                  <input type="radio" value="40" name="surf_time"/>
+                  <label>40小時以上</label>
                 </div>
               </div>
               <div className="field hidd">
                 <div className="ui radio checkbox">
-                  <input type="radio" name="age" value="" defaultChecked='true' />
+                  <input type="radio" name="surf_time" value="" defaultChecked='true' />
                   <label>null</label>
                 </div>
               </div>
             </div>
 
-            <p style={{color: "black"}}>3. 請問您的基本資料 :</p>
-
-            <div className="fields">
+            <div className="inline fields">
+              <label>每周線上購物時數 :</label>
               <div className="field">
-                <label>名字</label>
-                <input type="text" placeholder="Name" name="name"/>
+                <div className="ui radio checkbox">
+                  <input type="radio" value="10" name="shopping_time"/>
+                  <label>10小時</label>
+                </div>
               </div>
-              {/*<div className="field">
-                <label>姓氏</label>
-                <input type="text" placeholder="Middle Name" name="name"/>
-              </div>*/}
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="20" name="shopping_time"/>
+                  <label>20小時</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="30" name="shopping_time"/>
+                  <label>30小時</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="40" name="shopping_time"/>
+                  <label>40小時以上</label>
+                </div>
+              </div>
+              <div className="field hidd">
+                <div className="ui radio checkbox">
+                  <input type="radio" name="shopping_time" value="" defaultChecked='true' />
+                  <label>null</label>
+                </div>
+              </div>
+            </div>
+
+            <div className="inline fields">
+              <label>每次購買金額 :</label>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="500" name="shopping_money"/>
+                  <label>500元</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="1000" name="shopping_money"/>
+                  <label>1000元</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="1500" name="shopping_money"/>
+                  <label>1500元</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="2000" name="shopping_money"/>
+                  <label>2000元以上</label>
+                </div>
+              </div>
+              <div className="field hidd">
+                <div className="ui radio checkbox">
+                  <input type="radio" name="shopping_money" value="" defaultChecked='true' />
+                  <label>null</label>
+                </div>
+              </div>
             </div>
 
             <div className="ui submit button" onClick={this.starTest} >開始測驗</div>
