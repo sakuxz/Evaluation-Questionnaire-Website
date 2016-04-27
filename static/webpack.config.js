@@ -12,6 +12,7 @@ module.exports = {
     'angry': "./assets/js/angry.jsx",
     'worry': "./assets/js/worry.jsx",
     'pride': "./assets/js/pride.jsx",
+    'surprise': "./assets/js/surprise.jsx",
     'data_sheet': "./assets/js/dataSheet.jsx"
   },
   //輸出位置

@@ -188,7 +188,7 @@ export default React.createClass({
 
     var data = $(this.refs.form).serializeObject();
     localStorage.userData = JSON.stringify(data);
-    var situation = ['angry','worry'];
+    var situation = ['angry','worry','pride','surprise'];
     if(data.sex === "男"){
       //$("#test").text('情境'+Math.floor(Math.random()*5+1) );
       open("/"+situation[Math.floor(Math.random()*situation.length)]+".html","_self");
