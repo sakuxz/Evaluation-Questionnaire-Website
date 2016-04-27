@@ -3,14 +3,19 @@ var mans = require('./model_ans');
 var bodyParser = require('body-parser');
 var app = express();
 
+// var ip = process.env.OPENSHIFT_NODEJS_IP;
+// var port = process.env.OPENSHIFT_NODEJS_PORT | 8080;
+var ip = 'localhost';
+var port = 8000;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.listen(8000, function() {
-    app.use(express.static('./static'));
-});
+app.listen(port, ip);
+
+app.use(express.static('./static'));
 
 app.post('/ans', function(req, res, next) {
 

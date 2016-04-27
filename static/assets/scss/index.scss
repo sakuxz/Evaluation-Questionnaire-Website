@@ -40,7 +40,6 @@ a:hover {
 .sec-menu {
   background: #8C2121;
   padding: 0 1.2em;
-  
   //overflow: vi;
   .item {
     font-size: 1em;
@@ -50,7 +49,6 @@ a:hover {
     margin: 0 0.5em;
     transition: background 0.2s;
     position: relative;
-    
     //transition: 0.2s transform;
   }
   .item.new:after {
@@ -105,7 +103,6 @@ a:hover {
     width: 75%;
     margin: 2em auto;
     overflow: hidden;
-    
     //margin: 2em 1em;
     //padding-left: 1.8em;
     .content {
@@ -142,7 +139,6 @@ a:hover {
         }
       }
     }
-    
     //.icon-wrapper {
     //  background: #52B5E0;
     //  color: #FFFFFF;
@@ -165,7 +161,6 @@ a:hover {
       background: #52B5E0;
       color: #FFFFFF;
       border-radius: 20px;
-      
       //padding: 0.6em;
       line-height: 60px;
       width: 68px;
@@ -196,6 +191,17 @@ a:hover {
       margin: 0.8em 1.2em 2em;
       border-radius: 3px;
     }
+    .img-group {
+      overflow: auto;
+      img {
+        float: left;
+        min-width: 40%;
+        width: 40%;
+      }
+      img:nth-child(odd) {
+        clear: left;
+      }
+    }
   }
   h3.sub-title {
     margin-left: 15.3%;
@@ -211,7 +217,6 @@ a:hover {
       margin-right: 0.33em;
     }
   }
-  
   //h3.sub-title:after {
   //  content: "";
   //  display: block;
@@ -224,7 +229,6 @@ a:hover {
     margin: 2em auto;
     position: relative;
     overflow: hidden;
-    
     //box-shadow: 0 9px 16px -2px #DCDCDC;
     box-shadow: 0 10px 20px 5px #CCCCCC;
     border-radius: 5px;
@@ -243,7 +247,6 @@ a:hover {
       right: 0;
       top: 0;
       z-index: 100;
-      
       //
       background: #4186E6;
       color: white;
@@ -272,13 +275,11 @@ a:hover {
         width: 100%;
         height: 100%;
         z-index: 100;
-        padding: 1.6em;
-        padding-left: 2.2em;
+        padding: 1.6em 1.6em 1.6em 2.2em;
         h2 {
           margin: 1.2em 0 1em;
           color: #CA2A2A;
           font-family: "微軟正黑體";
-          
           //
           color: rgba(255, 255, 255, 1);
         }
@@ -308,7 +309,6 @@ a:hover {
       transform-origin: 0 0;
     }
   }
-  
   //.store-profile:hover {
   //  box-shadow: 0 14px 20px -4px #C1C1C1;
   //  transform: translateY(-2.5px);
@@ -319,7 +319,6 @@ a:hover {
     padding: 2em 0;
     button.blue {
       margin-right: 1em;
-      
       //background-color: #607D8B;
     }
     button:nth-child(2) {

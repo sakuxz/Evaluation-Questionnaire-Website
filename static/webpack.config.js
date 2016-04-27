@@ -10,6 +10,8 @@ module.exports = {
   entry: {
     'index': "./assets/js/index.jsx",
     'angry': "./assets/js/angry.jsx",
+    'worry': "./assets/js/worry.jsx",
+    'pride': "./assets/js/pride.jsx",
     'data_sheet': "./assets/js/dataSheet.jsx"
   },
   //輸出位置

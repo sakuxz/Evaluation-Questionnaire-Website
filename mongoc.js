@@ -1,7 +1,7 @@
 var ObjectID = require('mongodb').ObjectID;
 var mongoCli = require('mongodb').MongoClient;
 var url = 'mongodb://localhost:27017/answer';
-//var url = 'mongodb://admin:mXcdaJb-JK6z@$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/questionnaireipeen';
+//var url = 'mongodb://admin:mXcdaJb-JK6z@'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/questionnaireipeen';
 
 function mongoFind(collection, filter) {
   return new Promise((resolve, reject) => {

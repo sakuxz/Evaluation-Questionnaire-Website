@@ -188,13 +188,15 @@ export default React.createClass({
 
     var data = $(this.refs.form).serializeObject();
     localStorage.userData = JSON.stringify(data);
+    var situation = ['angry','worry'];
     if(data.sex === "男"){
       //$("#test").text('情境'+Math.floor(Math.random()*5+1) );
+      open("/"+situation[Math.floor(Math.random()*situation.length)]+".html","_self");
     }
     else{
       //$("#test").text('情境'+Math.floor(Math.random()*5+1) );
+      open("/"+situation[Math.floor(Math.random()*situation.length)]+".html","_self");
     }
-    open("/angry.html","_self");
   },
   componentDidMount: function() {
     $('.checkbox').checkbox();
