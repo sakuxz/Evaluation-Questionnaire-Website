@@ -16,23 +16,29 @@ export default React.createClass({
             <h4 className="ui dividing header">在瀏覽完網站後，請根據你的實際感受據實回答</h4>
 
             <div className="inline fields">
-              <label>作者花了多少錢吃這一頓下午茶:</label>
+              <label>評論文中作者點的炒手多少錢:</label>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" name="money" value="700" />
-                  <label>700</label>
+                  <input type="radio" name="money" value="90" />
+                  <label>90</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" name="money" value="800" />
-                  <label>800</label>
+                  <input type="radio" name="money" value="80" />
+                  <label>80</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" name="money" value="900" />
-                  <label>900</label>
+                  <input type="radio" name="money" value="65" />
+                  <label>65</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" name="money" value="50" />
+                  <label>50</label>
                 </div>
               </div>
               <div className="field hidd">
@@ -56,7 +62,7 @@ export default React.createClass({
   checkQue: function () {
     if($("input[name='money']:checked").val() === ""){
       alert("答案未填完整");
-    }else if($("input[name='money']:checked").val() !== "900"){
+    }else if($("input[name='money']:checked").val() !== "50"){
       setTimeout(function () {
         this.props.closeQue();
       }.bind(this),0);
