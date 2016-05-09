@@ -173,7 +173,9 @@ export default React.createClass({
       </div>
     );
   },
+  isSend: false,
   starTest: function() {
+    if(this.isSend) return;
     var t = false;
     $(this.refs.form).serializeArray().forEach(function(e,i) {
       if(e.value === ""){
@@ -185,20 +187,49 @@ export default React.createClass({
       alert("尚有欄位未填寫");
       return;
     }
-
+    this.isSend = true;
     var data = $(this.refs.form).serializeObject();
     localStorage.userData = JSON.stringify(data);
-    var situation = ['angry','worry','pride','surprise'];
-    if(data.sex === "男"){
-      //$("#test").text('情境'+Math.floor(Math.random()*5+1) );
-      open("/"+situation[Math.floor(Math.random()*situation.length)]+".html","_self");
-    }
-    else{
-      //$("#test").text('情境'+Math.floor(Math.random()*5+1) );
-      open("/"+situation[Math.floor(Math.random()*situation.length)]+".html","_self");
-    }
+    // var situation = ['angry','worry','pride','surprise'];
+    // if(data.sex === "男"){
+    //   //$("#test").text('情境'+Math.floor(Math.random()*5+1) );
+    //   open("/"+situation[Math.floor(Math.random()*situation.length)]+".html","_self");
+    // }
+    // else{
+    //   //$("#test").text('情境'+Math.floor(Math.random()*5+1) );
+    //   open("/"+situation[Math.floor(Math.random()*situation.length)]+".html","_self");
+    // }
+    getSituation(data.sex).then(function (e) {
+      if(e.status){
+        open("/"+e.data+".html","_self");
+      }else{
+        alert("網路錯誤");
+        this.isSend = false;
+      }
+    }.bind(this), function () {
+      alert("網路錯誤");
+      this.isSend = false;
+    }.bind(this));
+
   },
   componentDidMount: function() {
     $('.checkbox').checkbox();
   }
 });
+
+function getSituation(sex){
+  return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: '/situation',
+      type: 'GET',
+      data: {sex: sex}
+    })
+    .done(function(msg) {
+      resolve(msg)
+    })
+    .fail(function(e) {
+      reject(e);
+    });
+  });
+
+}

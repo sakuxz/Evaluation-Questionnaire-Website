@@ -25,7 +25,7 @@ var FloatingButton = React.createClass({
       //form = <Q1_1 nextFlow={this.nextFlow} />;
     }
 
-    var buttonClass = "yellow circular ui icon button fab";
+    var buttonClass = "readme yellow circular ui icon button fab";
     return (
     <div>
       <div id="question" onClick={this.openQue} className={(this.state.open)?buttonClass+" open":buttonClass}>

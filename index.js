@@ -8,6 +8,9 @@ var app = express();
 var ip = 'localhost';
 var port = 8000;
 
+var boyCount = 0;
+var girlCount = 0;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
@@ -49,6 +52,27 @@ app.get('/ans', function(req, res, next) {
             status: false,
             data: e
         });
+    });
+
+});
+
+var situation = ['angry','worry','pride','surprise'];
+
+app.get('/situation', function(req, res, next) {
+
+    var situ;
+    if(req.query.sex === "男"){
+       situ = situation[boyCount%situation.length];
+       boyCount++;
+       boyCount = boyCount%situation.length;
+    }else{
+      situ = situation[girlCount%situation.length];
+      girlCount++;
+      girlCount = girlCount%situation.length;
+    }
+    res.send({
+        status: true,
+        data: situ
     });
 
 });

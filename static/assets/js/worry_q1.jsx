@@ -20,19 +20,19 @@ export default React.createClass({
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" name="money" value="3" />
-                  <label>3</label>
+                  <label>3張</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" name="money" value="4" />
-                  <label>4</label>
+                  <label>4張</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" name="money" value="5" />
-                  <label>5</label>
+                  <label>5張</label>
                 </div>
               </div>
               <div className="field hidd">

@@ -403,6 +403,14 @@ div.mask.open {
   background: rgba(53, 62, 66, 0.70);
   visibility: visible;
 }
+#question.readme {
+  position: relative !important;
+  display: block;
+  margin: 4em auto;
+  width: 60%;
+  max-width: 700px;
+  padding: 0 2em !important;
+}
 #question.button.fab {
   position: fixed;
   bottom: 2em;
@@ -473,4 +481,7 @@ div.mask.open {
       }
     }
   }
+}
+.sa-confirm-button-container {
+  display: none !important;
 }
