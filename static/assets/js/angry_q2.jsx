@@ -16,7 +16,8 @@ var RadioGroup = React.createClass({
     }
     return (
       <div className="inline field">
-        <label style={{display:'block',margin: '1em 0 0.5em'}} >{this.props.data.title}</label>
+        <label style={{display:'block',margin: '1em 0 0'}} >{this.props.data.title}</label>
+        <div className="label-degree"><span>非常少努力</span><span>非常多努力</span></div>
         {field}
         <div style={{display:'inline-block'}} className="field hidd">
           <div className="ui radio checkbox">

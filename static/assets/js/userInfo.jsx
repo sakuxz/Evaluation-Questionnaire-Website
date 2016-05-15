@@ -31,14 +31,23 @@ export default React.createClass({
           <div className="ui form">
             <h4 className="ui dividing header">個人基本資料</h4>
 
-            <div className="fields">
+            <div className="two fields">
               <div className="field">
                 <label>名字</label>
                 <input type="text" placeholder="Name" name="name"/>
               </div>
               <div className="field">
                 <label>年齡</label>
-                <input type="number" placeholder="age" name="age"/>
+                <select name="age" className="ui fluid dropdown">
+                  <option value="">年齡</option>
+                  <option value="20歲以下">20歲以下</option>
+                  <option value="21~25歲">21~25歲</option>
+                  <option value="26~30歲">26~30歲</option>
+                  <option value="31~35歲">31~35歲</option>
+                  <option value="36~40歲">36~40歲</option>
+                  <option value="40~45歲">40~45歲</option>
+                  <option value="45以上">45以上</option>
+                </select>
               </div>
             </div>
 
