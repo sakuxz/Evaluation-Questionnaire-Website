@@ -7,6 +7,7 @@ const ReadMe = require('./readme');
 const UserInfo = require('./userInfo');
 const Pride_q1 = require('./pride_q1');
 const Pride_q2 = require('./pride_q2');
+const Pride_q3 = require('./pride_q3');
 
 if(localStorage.userData === undefined || localStorage.userData === "" )
 {
@@ -18,7 +19,8 @@ var FloatingButton = React.createClass({
     return {
       open: false,
       enableClose: true,
-      flowAt: 2
+      flowAt: 2,
+      tempData: null
     };
   },
   render: function() {
@@ -30,7 +32,9 @@ var FloatingButton = React.createClass({
     }else if(this.state.flowAt === 2){
       form = <Pride_q1 closeQue={this.closeQue} nextFlow={this.nextFlow} />;
     }else if (this.state.flowAt === 3) {
-      form = <Pride_q2 closeQue={this.closeQue} nextFlow={this.nextFlow} />;
+      form = <Pride_q2 closeQue={this.closeQue} nextFlow={this.nextFlow} saveTempData={this.saveTempData} />;
+    }else if (this.state.flowAt === 4) {
+      form = <Pride_q3 closeQue={this.closeQue} nextFlow={this.nextFlow} tempData={this.state.tempData} />;
     }
 
     var buttonClass = "yellow circular ui icon button fab";
@@ -78,6 +82,11 @@ var FloatingButton = React.createClass({
         open: false
       });
     }
+  },
+  saveTempData: function(data) {
+    this.setState({
+      tempData: data
+    });
   },
   componentDidMount: function() {
     $('html,body').css('overflow', 'initial');

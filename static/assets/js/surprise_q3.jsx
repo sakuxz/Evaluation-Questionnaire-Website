@@ -67,28 +67,22 @@ export default React.createClass({
     return {
       que: [
         {
-          title: "1. 你認為作者投入多少努力，來撰寫這篇評論文?",
-          name: "A1",
-          degreeBottom: "非常少努力",
-          degreeTop: "非常多努力"
+          title: "5-1 如果我在尋找餐廳，這篇評論文對我而言?",
+          name: "A5-1",
+          degreeBottom: "完全沒有幫助",
+          degreeTop: "非常有幫助"
         },
         {
-          title: "2. 你認為作者在寫這篇評論文之前，做了多少思考?",
-          name: "A2",
-          degreeBottom: "非常少思考",
-          degreeTop: "非常多思考"
+          title: "5-2 如果我在尋找餐廳，這篇評論文對我而言?",
+          name: "A5-2",
+          degreeBottom: "完全沒有用",
+          degreeTop: "非常有用"
         },
         {
-          title: "3. 你認為作者花了多少時間，來撰寫這篇評論文?",
-          name: "A3",
-          degreeBottom: "非常少時間",
-          degreeTop: "非常多時間"
-        },
-        {
-          title: "4. 你認為下面哪一種情緒，最能表達作者所想的意思?",
-          name: "A4",
-          degreeBottom: null,
-          degreeTop: null
+          title: "5-3 如果我在尋找餐廳，這篇評論文對我而言?",
+          name: "A5-3",
+          degreeBottom: "完全不具參考價值",
+          degreeTop: "非常具有參考價值"
         }
       ]
     };
@@ -99,7 +93,7 @@ export default React.createClass({
 
         <form ref='form'>
           <div className="ui form">
-            <h4 className="ui dividing header">在瀏覽完網站後，請根據你的實際感受據實回答</h4>
+            <h4 className="ui dividing header">在看完評論文後，請選出最能描述你實際感受的衡量尺度</h4>
 
             {
               this.state.que.map(function(e, i) {
@@ -134,31 +128,28 @@ export default React.createClass({
       return;
     }else{
       this.isSend = true;
-      //
-      // if(localStorage.userData === undefined || localStorage.userData === "" ){
-      //   open("/","_self");
-      // }
-      //
-      // var ans = $(this.refs.form).serializeArray();
-      // var t = JSON.parse(localStorage.userData);
-      // t.ans = ans;
-      // t.situation = 'angry';
-      // uploadAns(t).then(function() {
-      //   localStorage.removeItem("userData");
-      //   swal({
-      //       title: "Good job!",
-      //       text: "You finished the Questionnaire",
-      //       type: "success"
-      //   }, function() {
-      //       open("/","_self");
-      //   });
-      // }, ()=> {
-      //   alert("網路錯誤，請重試");
-      //   this.isSend = false;
-      // } );
+
+      if(localStorage.userData === undefined || localStorage.userData === "" ){
+        open("/","_self");
+      }
+
       var ans = $(this.refs.form).serializeArray();
-      this.props.saveTempData(ans);
-      this.props.nextFlow();
+      var t = JSON.parse(localStorage.userData);
+      t.ans = ans.concat(this.props.tempData);
+      t.situation = 'surprise';
+      uploadAns(t).then(function() {
+        localStorage.removeItem("userData");
+        swal({
+            title: "Good job!",
+            text: "You finished the Questionnaire",
+            type: "success"
+        }, function() {
+            open("/","_self");
+        });
+      }, ()=> {
+        alert("網路錯誤，請重試");
+        this.isSend = false;
+      } );
     }
 
   }

@@ -61,7 +61,6 @@ var DataTable = React.createClass({
               </table>
             )
           }
-          <button className="btn" data-clipboard-target="#dataTable">fsdfsd</button>
       </div>
     );
   }
@@ -103,6 +102,7 @@ var DataSheet = React.createClass({
           <div className="content">
             問卷資料
           </div>
+          <button className="btn" style={{float: "right",fontSize: "0.2em",background: "beige"}} data-clipboard-target="#dataTable">複製表格</button>
         </h2>
         {
           (this.state.isLoad)?(

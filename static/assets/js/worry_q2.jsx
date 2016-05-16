@@ -16,8 +16,40 @@ var RadioGroup = React.createClass({
     }
     return (
       <div className="inline field">
-        <label style={{display:'block',margin: '1em 0 0.5em'}} >{this.props.data.title}</label>
-        {field}
+        <label style={{display:'block',margin: '1em 0 0'}} >{this.props.data.title}</label>
+        {
+          (this.props.data.degreeTop)?<div className="label-degree"><span>{this.props.data.degreeBottom}</span><span>{this.props.data.degreeTop}</span></div>:
+          null
+        }
+        {
+          (this.props.data.degreeTop)?field:
+          <div style={{marginTop: '5px'}}>
+              <div style={{display:'inline-block',marginRight:"1em"}} className="field" >
+              <div className="ui radio checkbox">
+                <input type="radio" name={this.props.data.name} value="擔心"/>
+                <label>擔心</label>
+              </div>
+            </div>
+            <div style={{display:'inline-block',marginRight:"1em"}} className="field" >
+              <div className="ui radio checkbox">
+                <input type="radio" name={this.props.data.name} value="憤怒"/>
+                <label>憤怒</label>
+              </div>
+            </div>
+            <div style={{display:'inline-block',marginRight:"1em"}} className="field" >
+              <div className="ui radio checkbox">
+                <input type="radio" name={this.props.data.name} value="驕傲"/>
+                <label>驕傲</label>
+              </div>
+            </div>
+            <div style={{display:'inline-block',marginRight:"1em"}} className="field" >
+              <div className="ui radio checkbox">
+                <input type="radio" name={this.props.data.name} value="驚喜"/>
+                <label>驚喜</label>
+              </div>
+            </div>
+          </div>
+        }
         <div style={{display:'inline-block'}} className="field hidd">
           <div className="ui radio checkbox">
             <input type="radio" name={this.props.data.name} value="" defaultChecked='true' />
@@ -35,24 +67,28 @@ export default React.createClass({
     return {
       que: [
         {
-          title: "問題一",
-          name: "A1"
+          title: "1. 你認為作者投入多少努力，來撰寫這篇評論文?",
+          name: "A1",
+          degreeBottom: "非常少努力",
+          degreeTop: "非常多努力"
         },
         {
-          title: "問題二",
-          name: "A2"
+          title: "2. 你認為作者在寫這篇評論文之前，做了多少思考?",
+          name: "A2",
+          degreeBottom: "非常少思考",
+          degreeTop: "非常多思考"
         },
         {
-          title: "問題三",
-          name: "A3"
+          title: "3. 你認為作者花了多少時間，來撰寫這篇評論文?",
+          name: "A3",
+          degreeBottom: "非常少時間",
+          degreeTop: "非常多時間"
         },
         {
-          title: "問題四",
-          name: "A4"
-        },
-        {
-          title: "問題五",
-          name: "A5"
+          title: "4. 你認為下面哪一種情緒，最能表達作者所想的意思?",
+          name: "A4",
+          degreeBottom: null,
+          degreeTop: null
         }
       ]
     };
@@ -98,28 +134,31 @@ export default React.createClass({
       return;
     }else{
       this.isSend = true;
-
-      if(localStorage.userData === undefined || localStorage.userData === "" ){
-        open("/","_self");
-      }
-
+      //
+      // if(localStorage.userData === undefined || localStorage.userData === "" ){
+      //   open("/","_self");
+      // }
+      //
+      // var ans = $(this.refs.form).serializeArray();
+      // var t = JSON.parse(localStorage.userData);
+      // t.ans = ans;
+      // t.situation = 'angry';
+      // uploadAns(t).then(function() {
+      //   localStorage.removeItem("userData");
+      //   swal({
+      //       title: "Good job!",
+      //       text: "You finished the Questionnaire",
+      //       type: "success"
+      //   }, function() {
+      //       open("/","_self");
+      //   });
+      // }, ()=> {
+      //   alert("網路錯誤，請重試");
+      //   this.isSend = false;
+      // } );
       var ans = $(this.refs.form).serializeArray();
-      var t = JSON.parse(localStorage.userData);
-      t.ans = ans;
-      t.situation = 'worry';
-      uploadAns(t).then(function() {
-        localStorage.removeItem("userData");
-        swal({
-            title: "Good job!",
-            text: "You finished the Questionnaire",
-            type: "success"
-        }, function() {
-            open("/","_self");
-        });
-      }, ()=> {
-        alert("網路錯誤，請重試");
-        this.isSend = false;
-      } );
+      this.props.saveTempData(ans);
+      this.props.nextFlow();
     }
 
   }
