@@ -34,7 +34,7 @@ var DataTable = React.createClass({
               <p><i className="info circle icon"></i>尚無資料</p>
             </div>
           ):(
-            <table className="ui celled table">
+            <table className="ui celled table" id="dataTable">
               <thead>
                 <tr>
                   <th>姓名</th>
@@ -61,6 +61,7 @@ var DataTable = React.createClass({
               </table>
             )
           }
+          <button className="btn" data-clipboard-target="#dataTable">fsdfsd</button>
       </div>
     );
   }
@@ -115,6 +116,9 @@ var DataSheet = React.createClass({
 
       </div>
     );
+  },
+  componentDidMount: function() {
+    var clipboard = new Clipboard('.btn');
   }
 });
 

@@ -25,7 +25,7 @@ export default React.createClass({
             第三個部份：對評論文的感受的作答；<br/>
           </div>
         </div>
-        <span style={{borderBottom: '1px solid black',paddingBottom: '2px'}}>最後，為了感謝您的合作與耐心填答，本研究在確認無誤後，將提供確實填答的同學，每人一張 100 元的郵政禮卷 (等同現金使用) 作為答謝。</span><br/><br/>
+        <span style={{borderBottom: '1px solid #9A9A9A',paddingBottom: '2px'}}>最後，為了感謝您的合作與耐心填答，本研究在確認無誤後，將提供確實填答的同學，每人一張 100 元的郵政禮卷 (等同現金使用) 作為答謝。</span><br/><br/>
         再次謝謝您的協助！
           <h6 style={{textAlign:'right',margin: '1em',fontWeight: 500}} >資管系 陳美如老師 敬上</h6>
         </div>
