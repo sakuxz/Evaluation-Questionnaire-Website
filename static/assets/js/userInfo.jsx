@@ -196,8 +196,12 @@ export default React.createClass({
       alert("尚有欄位未填寫");
       return;
     }
-    this.isSend = true;
     var data = $(this.refs.form).serializeObject();
+    if(data.surf_time < data.shopping_time){
+      alert("線上購物時間大於上網時間，不合邏輯");
+      return;
+    }
+    this.isSend = true;
     localStorage.userData = JSON.stringify(data);
     // var situation = ['angry','worry','pride','surprise'];
     // if(data.sex === "男"){

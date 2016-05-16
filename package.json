@@ -27,6 +27,7 @@
     "jquery": "^2.1.4",
     "jsx-loader": "~0.13.2",
     "mongodb": "^2.1.16",
+    "mysql": "^2.10.2",
     "node-sass": "^3.2.0",
     "open-browser-webpack-plugin": "0.0.1",
     "react": "~0.14.2",
