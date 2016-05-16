@@ -102,7 +102,7 @@ var DataSheet = React.createClass({
           <div className="content">
             問卷資料
           </div>
-          <button className="btn" style={{float: "right",fontSize: "0.2em",background: "beige"}} data-clipboard-target="#dataTable">複製表格</button>
+          <button className="copy-btn" data-clipboard-target="#dataTable"><i className="copy icon"></i>複製表格</button>
         </h2>
         {
           (this.state.isLoad)?(
@@ -118,7 +118,7 @@ var DataSheet = React.createClass({
     );
   },
   componentDidMount: function() {
-    var clipboard = new Clipboard('.btn');
+    var clipboard = new Clipboard('.copy-btn');
   }
 });
 

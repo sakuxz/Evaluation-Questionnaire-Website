@@ -1,19 +1,36 @@
 @import "./ani.scss";
 .ui.header > i.icon {
-    width: 47px;
-    height: 47px;
-    font-size: 1.1em;
-    //background: #6C8C9C;
-    //border-radius: 50%;
-    //line-height: 47px;
-    //color: rgba(255, 255, 255, 0.83);
+  width: 47px;
+  height: 47px;
+  font-size: 1.1em;
+  //background: #6C8C9C;
+  //border-radius: 50%;
+  //line-height: 47px;
+  //color: rgba(255, 255, 255, 0.83);
 }
 .info-box {
-    width: 400px;
-    background: white;
-    padding: 1.3em;
-    font-size: 1.5em;
-    margin: 5em auto;
-    text-align: center;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03);
+  width: 400px;
+  background: white;
+  padding: 1.3em;
+  font-size: 1.5em;
+  margin: 5em auto;
+  text-align: center;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03);
+}
+.copy-btn {
+  float: right;
+  font-size: 0.2em;
+  background: beige;
+  border: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.21);
+  border-radius: 2px;
+  i {
+    margin-right: 3px;
+  }
+}
+.copy-btn:active {
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.24) inset;
+}
+.copy-btn:focus {
+  outline: none;
 }
