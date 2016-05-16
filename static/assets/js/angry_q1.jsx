@@ -43,7 +43,7 @@ export default React.createClass({
               </div>
             </div>
 
-            <div className="ui submit button" onClick={this.checkQue} >下一步</div>
+            <div className="ui submit button" onClick={this.checkQue} >下一頁</div>
 
           </div>
         </form>

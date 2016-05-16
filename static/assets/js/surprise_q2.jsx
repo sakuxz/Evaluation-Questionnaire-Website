@@ -39,7 +39,7 @@ var RadioGroup = React.createClass({
             <div style={{display:'inline-block',marginRight:"1em"}} className="field" >
               <div className="ui radio checkbox">
                 <input type="radio" name={this.props.data.name} value="驕傲"/>
-                <label>驕傲</label>
+                <label>驕傲/得意</label>
               </div>
             </div>
             <div style={{display:'inline-block',marginRight:"1em"}} className="field" >
@@ -107,7 +107,7 @@ export default React.createClass({
               })
             }
 
-            <div className="ui submit button" onClick={this.checkQue} >下一步</div>
+            <div className="ui submit button" onClick={this.checkQue} >下一頁</div>
 
           </div>
         </form>
