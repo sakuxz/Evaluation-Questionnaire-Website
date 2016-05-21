@@ -15,7 +15,7 @@ var RadioGroup = React.createClass({
       ) );
     }
     return (
-      <div className="inline field">
+      <div className="inline field" ref="radioGroup" >
         <label style={{display:'block',margin: '1em 0 0'}} >{this.props.data.title}</label>
         {
           (this.props.data.degreeTop)?<div className="label-degree"><span>{this.props.data.degreeBottom}</span><span>{this.props.data.degreeTop}</span></div>:
@@ -58,6 +58,11 @@ var RadioGroup = React.createClass({
         </div>
       </div>
     );
+  },
+  componentDidMount: function() {
+    if(!this.props.tempData) return;
+    var prevAns = this.props.tempData[this.props.index].value;
+    $("input[value='"+prevAns+"']",this.refs.radioGroup).attr('checked', true);
   }
 });
 
@@ -103,8 +108,8 @@ export default React.createClass({
 
             {
               this.state.que.map(function(e, i) {
-                return <RadioGroup data={e} key={i} />;
-              })
+                return <RadioGroup tempData={(this.props.tempData)?this.props.tempData:null} data={e} index={i} key={i} />;
+              }.bind(this))
             }
 
             <div className="ui submit button" onClick={this.checkQue} >下一頁</div>

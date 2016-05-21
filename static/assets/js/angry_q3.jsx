@@ -15,7 +15,7 @@ var RadioGroup = React.createClass({
       ) );
     }
     return (
-      <div className="inline field">
+      <div className="inline field" ref="radioGroup" >
         <label style={{display:'block',margin: '1em 0 0'}} >{this.props.data.title}</label>
         {
           (this.props.data.degreeTop)?<div className="label-degree"><span>{this.props.data.degreeBottom}</span><span>{this.props.data.degreeTop}</span></div>:
@@ -58,6 +58,11 @@ var RadioGroup = React.createClass({
         </div>
       </div>
     );
+  },
+  componentDidMount: function() {
+    if(!this.props.tempData2) return;
+    var prevAns = this.props.tempData2[this.props.index].value;
+    $("input[value='"+prevAns+"']",this.refs.radioGroup).attr('checked', true);
   }
 });
 
@@ -97,10 +102,11 @@ export default React.createClass({
 
             {
               this.state.que.map(function(e, i) {
-                return <RadioGroup data={e} key={i} />;
-              })
+                return <RadioGroup data={e} index={i} tempData2={this.props.tempData2} key={i} />;
+              }.bind(this))
             }
 
+            <div className="ui submit button" onClick={this.prevFlow} >上一頁</div>
             <div className="ui submit button" onClick={this.checkQue} >提交問卷</div>
 
           </div>
@@ -112,6 +118,11 @@ export default React.createClass({
     $('.checkbox').checkbox();
   },
   isSend: false,
+  prevFlow: function() {
+    var ans = $(this.refs.form).serializeArray();
+    this.props.saveTempData2(ans);
+    this.props.prevFlow();
+  },
   checkQue: function () {
     if(this.isSend){
       return;

@@ -20,7 +20,8 @@ var FloatingButton = React.createClass({
       open: false,
       enableClose: true,
       flowAt: 2,
-      tempData: null
+      tempData: null,
+      tempData2: null
     };
   },
   render: function() {
@@ -32,9 +33,9 @@ var FloatingButton = React.createClass({
     }else if(this.state.flowAt === 2){
       form = <Angry_q1 closeQue={this.closeQue} nextFlow={this.nextFlow} />;
     }else if (this.state.flowAt === 3) {
-      form = <Angry_q2 closeQue={this.closeQue} nextFlow={this.nextFlow} saveTempData={this.saveTempData} />;
+      form = <Angry_q2 closeQue={this.closeQue} nextFlow={this.nextFlow} saveTempData={this.saveTempData} tempData={this.state.tempData} />;
     }else if (this.state.flowAt === 4) {
-      form = <Angry_q3 closeQue={this.closeQue} nextFlow={this.nextFlow} tempData={this.state.tempData} />;
+      form = <Angry_q3 closeQue={this.closeQue} prevFlow={this.prevFlow} nextFlow={this.nextFlow} saveTempData2={this.saveTempData2} tempData2={this.state.tempData2} tempData={this.state.tempData} />;
     }
 
     var buttonClass = "yellow circular ui icon button fab";
@@ -70,6 +71,12 @@ var FloatingButton = React.createClass({
       flowAt: next
     });
   },
+  prevFlow: function(close) {
+    var prev = this.state.flowAt-1;
+    this.setState({
+      flowAt: prev
+    });
+  },
   openQue: function(e) {
     e.stopPropagation();
     this.setState({
@@ -86,6 +93,11 @@ var FloatingButton = React.createClass({
   saveTempData: function(data) {
     this.setState({
       tempData: data
+    });
+  },
+  saveTempData2: function(data) {
+    this.setState({
+      tempData2: data
     });
   },
   componentDidMount: function() {
