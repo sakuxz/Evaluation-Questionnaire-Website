@@ -38,7 +38,7 @@ var RadioGroup = React.createClass({
             </div>
             <div style={{display:'inline-block',marginRight:"1em"}} className="field" >
               <div className="ui radio checkbox">
-                <input type="radio" name={this.props.data.name} value="驕傲"/>
+                <input type="radio" name={this.props.data.name} value="驕傲/得意"/>
                 <label>驕傲/得意</label>
               </div>
             </div>
@@ -72,20 +72,26 @@ export default React.createClass({
     return {
       que: [
         {
-          title: "5-1 如果我在尋找餐廳，這篇評論文對我而言?",
-          name: "A5-1",
+          title: "4. 你認為下面哪一種情緒，最能表達作者所想的意思?",
+          name: "A4",
+          degreeBottom: null,
+          degreeTop: null
+        },
+        {
+          title: "5. 如果我在尋找餐廳，這篇評論文對我而言?",
+          name: "A5",
           degreeBottom: "完全沒有幫助",
           degreeTop: "非常有幫助"
         },
         {
-          title: "5-2 如果我在尋找餐廳，這篇評論文對我而言?",
-          name: "A5-2",
+          title: "6. 如果我在尋找餐廳，這篇評論文對我而言?",
+          name: "A6",
           degreeBottom: "完全沒有用",
           degreeTop: "非常有用"
         },
         {
-          title: "5-3 如果我在尋找餐廳，這篇評論文對我而言?",
-          name: "A5-3",
+          title: "7. 如果我在尋找餐廳，這篇評論文對我而言?",
+          name: "A7",
           degreeBottom: "完全不具參考價值",
           degreeTop: "非常具有參考價值"
         }
@@ -146,7 +152,7 @@ export default React.createClass({
 
       var ans = $(this.refs.form).serializeArray();
       var t = JSON.parse(localStorage.userData);
-      t.ans = ans.concat(this.props.tempData);
+      t.ans = this.props.tempData.concat(ans);
       t.situation = 'angry';
       uploadAns(t).then(function() {
         localStorage.removeItem("userData");
