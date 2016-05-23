@@ -72,25 +72,25 @@ export default React.createClass({
     return {
       que: [
         {
-          title: "4. 你認為下面哪一種情緒，最能表達作者所想的意思?",
+          title: "4. 你認為下面哪一種情緒，最能表達作者的心情?",
           name: "A4",
           degreeBottom: null,
           degreeTop: null
         },
         {
-          title: "5. 如果我在尋找餐廳，這篇評論文對我而言?",
+          title: "5. 如果我在尋找類似的店家，這篇評論文的內容對我而言?",
           name: "A5",
           degreeBottom: "完全沒有幫助",
           degreeTop: "非常有幫助"
         },
         {
-          title: "6. 如果我在尋找餐廳，這篇評論文對我而言?",
+          title: "6. 如果我在尋找類似的店家，這篇評論文的內容對我而言?",
           name: "A6",
           degreeBottom: "完全沒有用",
           degreeTop: "非常有用"
         },
         {
-          title: "7. 如果我在尋找餐廳，這篇評論文對我而言?",
+          title: "7. 如果我在尋找類似的店家，這篇評論文的內容對我而言?",
           name: "A7",
           degreeBottom: "完全不具參考價值",
           degreeTop: "非常具有參考價值"
@@ -113,7 +113,7 @@ export default React.createClass({
             }
 
             <div className="ui submit button" onClick={this.prevFlow} >上一頁</div>
-            <div className="ui submit button" onClick={this.checkQue} >提交問卷</div>
+            <div className="ui submit button" onClick={this.checkQue} >下一頁</div>
 
           </div>
         </form>
@@ -145,28 +145,31 @@ export default React.createClass({
       return;
     }else{
       this.isSend = true;
-
-      if(localStorage.userData === undefined || localStorage.userData === "" ){
-        open("/","_self");
-      }
-
+      //
+      // if(localStorage.userData === undefined || localStorage.userData === "" ){
+      //   open("/","_self");
+      // }
+      //
+      // var ans = $(this.refs.form).serializeArray();
+      // var t = JSON.parse(localStorage.userData);
+      // t.ans = ans;
+      // t.situation = 'angry';
+      // uploadAns(t).then(function() {
+      //   localStorage.removeItem("userData");
+      //   swal({
+      //       title: "Good job!",
+      //       text: "You finished the Questionnaire",
+      //       type: "success"
+      //   }, function() {
+      //       open("/","_self");
+      //   });
+      // }, ()=> {
+      //   alert("網路錯誤，請重試");
+      //   this.isSend = false;
+      // } );
       var ans = $(this.refs.form).serializeArray();
-      var t = JSON.parse(localStorage.userData);
-      t.ans = this.props.tempData.concat(ans);
-      t.situation = 'worry';
-      uploadAns(t).then(function() {
-        localStorage.removeItem("userData");
-        swal({
-            title: "Good job!",
-            text: "實驗到此結束，謝謝您的協助",
-            type: "success"
-        }, function() {
-            open("/","_self");
-        });
-      }, ()=> {
-        alert("網路錯誤，請重試");
-        this.isSend = false;
-      } );
+      this.props.saveTempData2(ans);
+      this.props.nextFlow();
     }
 
   }

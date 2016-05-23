@@ -60,8 +60,8 @@ var RadioGroup = React.createClass({
     );
   },
   componentDidMount: function() {
-    if(!this.props.tempData) return;
-    var prevAns = this.props.tempData[this.props.index].value;
+    if(!this.props.tempData3) return;
+    var prevAns = this.props.tempData3[this.props.index].value;
     $("input[value='"+prevAns+"']",this.refs.radioGroup).attr('checked', true);
   }
 });
@@ -72,22 +72,22 @@ export default React.createClass({
     return {
       que: [
         {
-          title: "1. 你認為作者投入多少努力，來撰寫這篇評論文?",
-          name: "A1",
-          degreeBottom: "非常少努力",
-          degreeTop: "非常多努力"
+          title: "8. 在閱讀這篇評論文時，我彷彿與作者經歷了相同的情況。",
+          name: "A8",
+          degreeBottom: "非常不同意",
+          degreeTop: "非常同意"
         },
         {
-          title: "2. 你認為作者在發表這篇評論文之前，做了多少思考?",
-          name: "A2",
-          degreeBottom: "非常少思考",
-          degreeTop: "非常多思考"
+          title: "9. 在閱讀這篇評論文時，我感覺也被作者的負面情緒所感染了。",
+          name: "A9",
+          degreeBottom: "非常不同意",
+          degreeTop: "非常同意"
         },
         {
-          title: "3. 你認為作者花了多少時間，來撰寫這篇評論文?",
-          name: "A3",
-          degreeBottom: "非常少時間",
-          degreeTop: "非常多時間"
+          title: "10. 在閱讀這篇評論文時，我感覺我的心情會隨著內容而高低起伏。",
+          name: "A10",
+          degreeBottom: "非常不同意",
+          degreeTop: "非常同意"
         }
       ]
     };
@@ -98,15 +98,16 @@ export default React.createClass({
 
         <form ref='form'>
           <div className="ui form">
-            <h4 className="ui dividing header">在瀏覽完網站後，請根據你的實際感受據實回答</h4>
+            <h4 className="ui dividing header">在看完評論文後，請選出最能描述你實際感受的衡量尺度</h4>
 
             {
               this.state.que.map(function(e, i) {
-                return <RadioGroup tempData={(this.props.tempData)?this.props.tempData:null} data={e} index={i} key={i} />;
+                return <RadioGroup data={e} index={i} tempData3={this.props.tempData3} key={i} />;
               }.bind(this))
             }
 
-            <div className="ui submit button" onClick={this.checkQue} >下一頁</div>
+            <div className="ui submit button" onClick={this.prevFlow} >上一頁</div>
+            <div className="ui submit button" onClick={this.checkQue} >提交問卷</div>
 
           </div>
         </form>
@@ -117,6 +118,11 @@ export default React.createClass({
     $('.checkbox').checkbox();
   },
   isSend: false,
+  prevFlow: function() {
+    var ans = $(this.refs.form).serializeArray();
+    this.props.saveTempData3(ans);
+    this.props.prevFlow();
+  },
   checkQue: function () {
     if(this.isSend){
       return;
@@ -133,31 +139,28 @@ export default React.createClass({
       return;
     }else{
       this.isSend = true;
-      //
-      // if(localStorage.userData === undefined || localStorage.userData === "" ){
-      //   open("/","_self");
-      // }
-      //
-      // var ans = $(this.refs.form).serializeArray();
-      // var t = JSON.parse(localStorage.userData);
-      // t.ans = ans;
-      // t.situation = 'angry';
-      // uploadAns(t).then(function() {
-      //   localStorage.removeItem("userData");
-      //   swal({
-      //       title: "Good job!",
-      //       text: "You finished the Questionnaire",
-      //       type: "success"
-      //   }, function() {
-      //       open("/","_self");
-      //   });
-      // }, ()=> {
-      //   alert("網路錯誤，請重試");
-      //   this.isSend = false;
-      // } );
+
+      if(localStorage.userData === undefined || localStorage.userData === "" ){
+        open("/","_self");
+      }
+
       var ans = $(this.refs.form).serializeArray();
-      this.props.saveTempData(ans);
-      this.props.nextFlow();
+      var t = JSON.parse(localStorage.userData);
+      t.ans = this.props.tempData.concat(this.props.tempData2).concat(ans);
+      t.situation = 'worry';
+      uploadAns(t).then(function() {
+        localStorage.removeItem("userData");
+        swal({
+            title: "Good job!",
+            text: "實驗到此結束，謝謝您的協助",
+            type: "success"
+        }, function() {
+            open("/","_self");
+        });
+      }, ()=> {
+        alert("網路錯誤，請重試");
+        this.isSend = false;
+      } );
     }
 
   }

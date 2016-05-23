@@ -31,12 +31,12 @@ export default React.createClass({
           <div className="ui form">
             <h4 className="ui dividing header">個人基本資料</h4>
 
-            <div className="two fields">
-              <div className="field">
-                <label>名字</label>
-                <input type="text" placeholder="Name" name="name"/>
-              </div>
-              <div className="field">
+            <div className="field" style={{visibility:"hidden",height:0}}>
+              <label>名字</label>
+              <input type="text" placeholder="Name" value="disable" name="name"/>
+            </div>
+            <div className="field">
+              <div className="field" style={{width:'45%'}} >
                 <label>年齡</label>
                 <select name="age" className="ui fluid dropdown">
                   <option value="">年齡</option>
@@ -78,25 +78,25 @@ export default React.createClass({
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" value="10" name="surf_time"/>
-                  <label>10小時</label>
+                  <label>10小時以內</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="20" name="surf_time"/>
-                  <label>20小時</label>
+                  <input type="radio" value="11" name="surf_time"/>
+                  <label>11-20小時</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="30" name="surf_time"/>
-                  <label>30小時</label>
+                  <input type="radio" value="21" name="surf_time"/>
+                  <label>21-30小時</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="40" name="surf_time"/>
-                  <label>40小時以上</label>
+                  <input type="radio" value="31" name="surf_time"/>
+                  <label>31小時以上</label>
                 </div>
               </div>
               <div className="field hidd">
@@ -112,25 +112,25 @@ export default React.createClass({
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" value="10" name="shopping_time"/>
-                  <label>10小時</label>
+                  <label>10小時以內</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="20" name="shopping_time"/>
-                  <label>20小時</label>
+                  <input type="radio" value="11" name="shopping_time"/>
+                  <label>11-20小時</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="30" name="shopping_time"/>
-                  <label>30小時</label>
+                  <input type="radio" value="21" name="shopping_time"/>
+                  <label>21-30小時</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="40" name="shopping_time"/>
-                  <label>40小時以上</label>
+                  <input type="radio" value="31" name="shopping_time"/>
+                  <label>31小時以上</label>
                 </div>
               </div>
               <div className="field hidd">
@@ -145,26 +145,26 @@ export default React.createClass({
               <label>每次購買金額 :</label>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="500" name="shopping_money"/>
-                  <label>500元</label>
-                </div>
-              </div>
-              <div className="field">
-                <div className="ui radio checkbox">
                   <input type="radio" value="1000" name="shopping_money"/>
-                  <label>1000元</label>
+                  <label>1000元以內</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="1500" name="shopping_money"/>
-                  <label>1500元</label>
+                  <input type="radio" value="1001" name="shopping_money"/>
+                  <label>1001元-2000元</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="2000" name="shopping_money"/>
-                  <label>2000元以上</label>
+                  <input type="radio" value="2001" name="shopping_money"/>
+                  <label>2001元-3000元</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="3001" name="shopping_money"/>
+                  <label>3001元以上</label>
                 </div>
               </div>
               <div className="field hidd">

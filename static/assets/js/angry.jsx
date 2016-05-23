@@ -8,6 +8,7 @@ const UserInfo = require('./userInfo');
 const Angry_q1 = require('./angry_q1');
 const Angry_q2 = require('./angry_q2');
 const Angry_q3 = require('./angry_q3');
+const Angry_q4 = require('./angry_q4');
 
 if(localStorage.userData === undefined || localStorage.userData === "" )
 {
@@ -21,7 +22,8 @@ var FloatingButton = React.createClass({
       enableClose: true,
       flowAt: 2,
       tempData: null,
-      tempData2: null
+      tempData2: null,
+      tempData3: null
     };
   },
   render: function() {
@@ -35,7 +37,9 @@ var FloatingButton = React.createClass({
     }else if (this.state.flowAt === 3) {
       form = <Angry_q2 closeQue={this.closeQue} nextFlow={this.nextFlow} saveTempData={this.saveTempData} tempData={this.state.tempData} />;
     }else if (this.state.flowAt === 4) {
-      form = <Angry_q3 closeQue={this.closeQue} prevFlow={this.prevFlow} nextFlow={this.nextFlow} saveTempData2={this.saveTempData2} tempData2={this.state.tempData2} tempData={this.state.tempData} />;
+      form = <Angry_q3 closeQue={this.closeQue} prevFlow={this.prevFlow} nextFlow={this.nextFlow} saveTempData2={this.saveTempData2} tempData2={this.state.tempData2}/>;
+    }else if (this.state.flowAt === 5) {
+      form = <Angry_q4 closeQue={this.closeQue} prevFlow={this.prevFlow} nextFlow={this.nextFlow} saveTempData3={this.saveTempData3} tempData3={this.state.tempData3} tempData2={this.state.tempData2} tempData={this.state.tempData} />;
     }
 
     var buttonClass = "yellow circular ui icon button fab";
@@ -98,6 +102,11 @@ var FloatingButton = React.createClass({
   saveTempData2: function(data) {
     this.setState({
       tempData2: data
+    });
+  },
+  saveTempData3: function(data) {
+    this.setState({
+      tempData3: data
     });
   },
   componentDidMount: function() {

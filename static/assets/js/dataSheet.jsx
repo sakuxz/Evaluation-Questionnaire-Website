@@ -7,12 +7,12 @@ var TableCtn = React.createClass({
   render: function () {
     return (
       <tr>
-        <td>{this.props.data.name}</td>
+        {/*<td>{this.props.data.name}</td>*/}
         <td>{this.props.data.age}</td>
         <td>{this.props.data.sex}</td>
-        <td>{this.props.data.surf_time}</td>
-        <td>{this.props.data.shopping_time}</td>
-        <td>{this.props.data.shopping_money}</td>
+        <td>{refactorData(this.props.data.surf_time)}</td>
+        <td>{refactorData(this.props.data.shopping_time)}</td>
+        <td>{refactorData(this.props.data.shopping_money)}</td>
         <td>{this.props.data.situation}</td>
         {
           this.props.data.ans.map(function(e, i) {
@@ -37,7 +37,7 @@ var DataTable = React.createClass({
             <table className="ui celled table" id="dataTable">
               <thead>
                 <tr>
-                  <th>姓名</th>
+                  {/*<th>姓名</th>*/}
                   <th>年齡</th>
                   <th>性別</th>
                   <th>每周上網時數</th>
@@ -124,6 +124,29 @@ var DataSheet = React.createClass({
 
 ReactDOM.render(
   <DataSheet />, document.querySelector(".content-wrapper"));
+
+function refactorData(n) {
+  switch (n) {
+    case 10:
+      return "10小時以內";
+    case 11:
+      return "11-20小時";
+    case 21:
+      return "21-30小時";
+    case 31:
+      return "31小時以上";
+    case 1000:
+      return "1000元以內";
+    case 1001:
+      return "1001元-2000元";
+    case 2001:
+      return "2001元-3000元";
+    case 3001:
+      return "3001元以上";
+    default:
+
+  }
+}
 
 function getAns(data){
   return new Promise(function(resolve, reject) {

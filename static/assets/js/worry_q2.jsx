@@ -72,22 +72,22 @@ export default React.createClass({
     return {
       que: [
         {
-          title: "1. 在閱讀這篇評論文時，我彷彿與作者經歷了相同的情況。",
+          title: "1. 你認為作者投入多少努力，來撰寫這篇評論文?",
           name: "A1",
-          degreeBottom: "非常不同意",
-          degreeTop: "非常同意"
+          degreeBottom: "非常少努力",
+          degreeTop: "非常多努力"
         },
         {
-          title: "2. 在閱讀這篇評論文時，我感覺也被作者的負面情緒所感染了。",
+          title: "2. 你認為作者在發表這篇評論文之前，做了多少思考?",
           name: "A2",
-          degreeBottom: "非常不同意",
-          degreeTop: "非常同意"
+          degreeBottom: "非常少思考",
+          degreeTop: "非常多思考"
         },
         {
-          title: "3. 在閱讀這篇評論文時，我感覺我的心情會隨著內容而高低起伏。",
+          title: "3. 你認為作者花了多少時間，來撰寫這篇評論文?",
           name: "A3",
-          degreeBottom: "非常不同意",
-          degreeTop: "非常同意"
+          degreeBottom: "非常少時間",
+          degreeTop: "非常多時間"
         }
       ]
     };
