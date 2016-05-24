@@ -443,7 +443,7 @@ div.mask.open {
   display: block;
   margin: 4em auto;
   width: 65%;
-  max-width: 800px;
+  max-width: 830px;
   padding: 0 2em !important;
 }
 #question.button.fab {
@@ -484,7 +484,10 @@ div.mask.open {
       opacity: 0;
     }
     .fields {
-      margin: 1.6em 0;
+      margin: 1em 0 1.6em;
+    }
+    .input-label{
+      color: black;
     }
   }
 }

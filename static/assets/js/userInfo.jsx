@@ -73,8 +73,8 @@ export default React.createClass({
               </div>
             </div>
 
+            <label className="input-label" >每周上網時數 :</label>
             <div className="inline fields">
-              <label>每周上網時數 :</label>
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" value="10" name="surf_time"/>
@@ -96,7 +96,13 @@ export default React.createClass({
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" value="31" name="surf_time"/>
-                  <label>31小時以上</label>
+                  <label>31-40小時</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="41" name="surf_time"/>
+                  <label>41小時以上</label>
                 </div>
               </div>
               <div className="field hidd">
@@ -107,8 +113,8 @@ export default React.createClass({
               </div>
             </div>
 
+            <label className="input-label" >每周線上購物時數 :</label>
             <div className="inline fields">
-              <label>每周線上購物時數 :</label>
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" value="10" name="shopping_time"/>
@@ -130,7 +136,13 @@ export default React.createClass({
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" value="31" name="shopping_time"/>
-                  <label>31小時以上</label>
+                  <label>31-40小時</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="41" name="shopping_time"/>
+                  <label>41小時以上</label>
                 </div>
               </div>
               <div className="field hidd">
@@ -141,8 +153,8 @@ export default React.createClass({
               </div>
             </div>
 
+            <label className="input-label" >每次購買金額 :</label>
             <div className="inline fields">
-              <label>每次購買金額 :</label>
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" value="1000" name="shopping_money"/>
@@ -164,7 +176,13 @@ export default React.createClass({
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" value="3001" name="shopping_money"/>
-                  <label>3001元以上</label>
+                  <label>3001元-4000元</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="4001" name="shopping_money"/>
+                  <label>4001元以上</label>
                 </div>
               </div>
               <div className="field hidd">
