@@ -134,7 +134,9 @@ function refactorData(n) {
     case 21:
       return "21-30小時";
     case 31:
-      return "31小時以上";
+      return "31-40小時";
+    case 41:
+      return "41小時以上";
     case 1000:
       return "1000元以內";
     case 1001:
