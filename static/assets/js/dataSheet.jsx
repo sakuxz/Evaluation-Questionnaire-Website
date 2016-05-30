@@ -144,7 +144,9 @@ function refactorData(n) {
     case 2001:
       return "2001元-3000元";
     case 3001:
-      return "3001元以上";
+      return "3001元-4000元";
+    case 4001:
+      return "4001元以上";
     default:
 
   }

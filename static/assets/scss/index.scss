@@ -188,10 +188,13 @@ a:hover {
     img {
       min-width: 58%;
       max-width: 65%;
+      min-width: 30%;
+      max-width: 38%;
       margin: 0.8em 1.2em 2em;
       border-radius: 3px;
     }
     .img-group {
+      max-width: 60%;
       overflow: auto;
       margin: 1em 0 2em;
       > div {
