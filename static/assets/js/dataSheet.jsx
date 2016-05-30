@@ -7,7 +7,8 @@ var TableCtn = React.createClass({
   render: function () {
     return (
       <tr>
-        {/*<td>{this.props.data.name}</td>*/}
+        <td>{(this.props.data.name === 'disable')?"":this.props.data.name}</td>
+        <td>{this.props.data.studno}</td>
         <td>{this.props.data.age}</td>
         <td>{this.props.data.sex}</td>
         <td>{refactorData(this.props.data.surf_time)}</td>
@@ -37,7 +38,8 @@ var DataTable = React.createClass({
             <table className="ui celled table" id="dataTable">
               <thead>
                 <tr>
-                  {/*<th>姓名</th>*/}
+                  <th>姓名</th>
+                  <th>學號</th>
                   <th>年齡</th>
                   <th>性別</th>
                   <th>每周上網時數</th>
