@@ -193,10 +193,29 @@ export default React.createClass({
               </div>
             </div>
 
-            <div className="ui submit button" onClick={this.starTest} >開始測驗</div>
+            <div className="ui submit button" onClick={this.starTest} >下一步</div>
 
           </div>
         </form>
+
+        <div className="opt-modal" ref="model" >
+          <form className="ui form" ref="optForm" >
+            <h4 className="ui dividing header">選填資料 (小禮物發放用)</h4>
+            <div className="field">
+              <label>個人資訊</label>
+              <div className="fields">
+                <div className="field">
+                  <input type="text" name="name" placeholder="姓名" />
+                </div>
+                <div className="field">
+                  <input type="text" name="studno" placeholder="學號" />
+                </div>
+              </div>
+            </div>
+            <div className="ui button" onClick={this.goSitu} >開始測驗</div>
+          </form>
+        </div>
+
       </div>
     );
   },
@@ -232,7 +251,7 @@ export default React.createClass({
     // }
     getSituation(data.sex).then(function (e) {
       if(e.status){
-        open("/"+e.data+".html","_self");
+        this.situation = e.data;
       }else{
         alert("網路錯誤");
         this.isSend = false;
@@ -241,7 +260,16 @@ export default React.createClass({
       alert("網路錯誤");
       this.isSend = false;
     }.bind(this));
-
+    $(this.refs.model).addClass('vis');
+  },
+  situation: null,
+  goSitu: function() {
+    var data = $(this.refs.optForm).serializeObject();
+    var t = JSON.parse(localStorage.userData);
+    t.name = data.name;
+    t.studno = data.studno;
+    localStorage.userData = JSON.stringify(t);
+    open("/"+this.situation+".html","_self");
   },
   componentDidMount: function() {
     $('.checkbox').checkbox();

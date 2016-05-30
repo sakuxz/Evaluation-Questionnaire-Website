@@ -20,7 +20,7 @@ class ans {
     return new Promise(function(resolve, reject) {
       var ans = this.ansData;
       var insert = new mysqlc();
-      insert.query("INSERT INTO `answer`.`ans` (`id`, `name`, `sex`, `age`, `surf_time`, `shopping_time`, `shopping_money`, `situation`, `ans`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)", [ans.name, ans.sex, ans.age, ans.surf_time, ans.shopping_time, ans.shopping_money, ans.situation, JSON.stringify(ans.ans)]).then(function(e) {
+      insert.query("INSERT INTO `answer`.`ans` (`id`, `name`, `sex`, `age`, `surf_time`, `shopping_time`, `shopping_money`, `situation`, `ans`, `studno`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [ans.name, ans.sex, ans.age, ans.surf_time, ans.shopping_time, ans.shopping_money, ans.situation, JSON.stringify(ans.ans), ans.studno]).then(function(e) {
         resolve(e);
         insert.getConnection().end();
       }, (e) => {

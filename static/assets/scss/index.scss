@@ -489,7 +489,7 @@ div.mask.open {
     .fields {
       margin: 1em 0 1.6em;
     }
-    .input-label{
+    .input-label {
       color: black;
     }
   }
@@ -537,4 +537,21 @@ div.mask.open {
 }
 .sa-confirm-button-container {
   display: none !important;
+}
+.opt-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0);
+  transition: all 0.45s;
+  visibility: hidden;
+  transition-timing-function: cubic-bezier(0.57, 0.04, 0.45, 1.14);
+  transform: translateX(105%);
+}
+.opt-modal.vis {
+  background: #FFFFFC;
+  visibility: visible;
+  transform: translate(0,0);
 }
