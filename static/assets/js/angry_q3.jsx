@@ -143,6 +143,23 @@ export default React.createClass({
     if(!checked){
       alert("尚有欄位未填寫");
       return;
+    }else if($("input[name='A4']:checked").val() !== "憤怒") {
+      setTimeout(function () {
+        this.props.closeQue();
+      }.bind(this),0);
+      alert("第四題答案錯誤，請重看網頁內容在做填答");
+      $('.pop-up').removeClass('flash');
+      $('.pop-up').text('填寫問卷');
+      $("html,body").animate({
+  			scrollTop: 0
+  		}, 1200, 'swing', function () {
+        $('.rank').visibility({
+          onTopVisible: function(calculations) {
+            $('.pop-up').addClass('flash');
+            $('.pop-up').text('下一步')
+          }
+        });
+  		});
     }else{
       this.isSend = true;
       //
