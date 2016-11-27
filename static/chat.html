@@ -2,15 +2,15 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 
 <style>
     body {
-        margin: 1.2em;
-        background: linear-gradient(45deg, rgba(170, 224, 255, 0.17), rgba(120, 255, 120, 0.44), rgba(110, 255, 85, 0.4), rgba(247, 255, 130, 0.6)), linear-gradient(-45deg, #DAF1FF, #F3D8B6, rgba(123, 182, 255, 0.32), #FCFFD2);
-        background: linear-gradient(45deg, rgba(211, 239, 255, 0.42), rgba(182, 243, 182, 0.44), rgba(143, 255, 123, 0.4), rgba(252, 255, 210, 0.48)), linear-gradient(-45deg, #DAF1FF, #F3D8B6, rgba(255, 123, 214, 0.17), #FCFFD2);
-        background-attachment: fixed;
+      margin: 0;
+      background: linear-gradient(45deg, rgba(170, 224, 255, 0.17), rgba(120, 255, 120, 0.44), rgba(110, 255, 85, 0.4), rgba(247, 255, 130, 0.6)), linear-gradient(-45deg, #DAF1FF, #F3D8B6, rgba(123, 182, 255, 0.32), #FCFFD2);
+      background: linear-gradient(45deg, rgba(211, 239, 255, 0.42), rgba(182, 243, 182, 0.44), rgba(143, 255, 123, 0.4), rgba(252, 255, 210, 0.48)), linear-gradient(-45deg, #DAF1FF, #F3D8B6, rgba(255, 123, 214, 0.17), #FCFFD2);
+      background-attachment: fixed;
     }
 
     .container {
@@ -118,40 +118,41 @@
     @media screen and (max-width: 569px) {
         .container {
             min-width: initial;
-            width: 85%;
+            width: 78%;
         }
+    }
+    .fade-enter-active, .fade-leave {
+      transition: all .3s
+    }
+    .fade-enter, .fade-leave-active {
+      opacity: 0;
+      transform: translateY(0.5em);
     }
 </style>
 
 <body>
 
-    <div class='container'>
+    <div id="chat-wrapper">
+      <div class='container'>
+        <transition-group name="fade">
+          <div v-for="chat in chats" v-bind:key="chat" class="outer" v-bind:class="{ right: chat.isYour }">
+              <div v-bind:class="{ 'box_l': !chat.isYour, 'box_r': chat.isYour }" id="1389296129040" v-bind:title="( new Date(chat.time).toLocaleString() )">{{chat.text}}</div>
+          </div>
+        </transition-group>
 
-        <div class="outer">
-            <div class="box_l" id="1389296129040" title="2014年1月10日 3:35">Hello</div>
-        </div>
-        <div class="outer">
-            <div class="box_l" id="1389296130981" title="2014年1月10日 3:35">><</div>
-        </div>
-        <div class="outer right">
-            <div class="box_r" id="1389318788081" title="2014年1月10日 9:53">明天幾點出發</div>
-        </div>
-        <div class="outer">
-            <div class="box_r" id="1389883377753" title="2014年1月16日 22:42">8.45</div>
-        </div>
-        <div class="outer">
-            <div class="box_r" id="1389883384376" title="2014年1月16日 22:43">GOGO</div>
-        </div>
+      </div>
 
-
-    </div>
-
-    <div class="comment-panel">
-      <button>send</button>
-      <div class="input-wrapper">
-        <input type="text" />
+      <div class="comment-panel">
+        <button v-on:click="addChat">send</button>
+        <div class="input-wrapper">
+          <input v-on:keyup.enter="addChat" type="text" v-model="inputText" />
+        </div>
       </div>
     </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="build/jquery-2.1.4.min.js"></script>
+    <script src="build/chat.js"></script>
 
 </body>
 
