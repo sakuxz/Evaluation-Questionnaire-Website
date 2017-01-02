@@ -77,32 +77,32 @@ export default React.createClass({
             <div className="inline fields">
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="10" name="surf_time"/>
-                  <label>10小時以內</label>
+                  <input type="radio" value="5" name="surf_time"/>
+                  <label>5 小時以內</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="6" name="surf_time"/>
+                  <label>6-10 小時</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" value="11" name="surf_time"/>
-                  <label>11-20小時</label>
+                  <label>11-20 小時</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" value="21" name="surf_time"/>
-                  <label>21-30小時</label>
+                  <label>21-30 小時</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
                   <input type="radio" value="31" name="surf_time"/>
-                  <label>31-40小時</label>
-                </div>
-              </div>
-              <div className="field">
-                <div className="ui radio checkbox">
-                  <input type="radio" value="41" name="surf_time"/>
-                  <label>41小時以上</label>
+                  <label>31 小時以上</label>
                 </div>
               </div>
               <div className="field hidd">
@@ -113,36 +113,42 @@ export default React.createClass({
               </div>
             </div>
 
-            <label className="input-label" >每周線上購物時數 :</label>
+            <label className="input-label" >每周線上購物次數 :</label>
             <div className="inline fields">
               <div className="field">
                 <div className="ui radio checkbox">
+                  <input type="radio" value="0" name="shopping_time"/>
+                  <label>0 次</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="1" name="shopping_time"/>
+                  <label>1-3 次</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="4" name="shopping_time"/>
+                  <label>4-6 次</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
+                  <input type="radio" value="7" name="shopping_time"/>
+                  <label>7-9 次</label>
+                </div>
+              </div>
+              <div className="field">
+                <div className="ui radio checkbox">
                   <input type="radio" value="10" name="shopping_time"/>
-                  <label>10小時以內</label>
+                  <label>10-12 次</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="11" name="shopping_time"/>
-                  <label>11-20小時</label>
-                </div>
-              </div>
-              <div className="field">
-                <div className="ui radio checkbox">
-                  <input type="radio" value="21" name="shopping_time"/>
-                  <label>21-30小時</label>
-                </div>
-              </div>
-              <div className="field">
-                <div className="ui radio checkbox">
-                  <input type="radio" value="31" name="shopping_time"/>
-                  <label>31-40小時</label>
-                </div>
-              </div>
-              <div className="field">
-                <div className="ui radio checkbox">
-                  <input type="radio" value="41" name="shopping_time"/>
-                  <label>41小時以上</label>
+                  <input type="radio" value="13" name="shopping_time"/>
+                  <label>13 次以上</label>
                 </div>
               </div>
               <div className="field hidd">
@@ -157,32 +163,32 @@ export default React.createClass({
             <div className="inline fields">
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="1000" name="shopping_money"/>
-                  <label>1000元以內</label>
+                  <input type="radio" value="100" name="shopping_money"/>
+                  <label>100元以內</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="1001" name="shopping_money"/>
-                  <label>1001元-2000元</label>
+                  <input type="radio" value="101" name="shopping_money"/>
+                  <label>101元-300元</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="2001" name="shopping_money"/>
-                  <label>2001元-3000元</label>
+                  <input type="radio" value="301" name="shopping_money"/>
+                  <label>301元-500元</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="3001" name="shopping_money"/>
-                  <label>3001元-4000元</label>
+                  <input type="radio" value="501" name="shopping_money"/>
+                  <label>501元-700元</label>
                 </div>
               </div>
               <div className="field">
                 <div className="ui radio checkbox">
-                  <input type="radio" value="4001" name="shopping_money"/>
-                  <label>4001元以上</label>
+                  <input type="radio" value="701" name="shopping_money"/>
+                  <label>701元以上</label>
                 </div>
               </div>
               <div className="field hidd">
@@ -234,10 +240,6 @@ export default React.createClass({
       return;
     }
     var data = $(this.refs.form).serializeObject();
-    if(data.surf_time < data.shopping_time){
-      alert("線上購物時間大於上網時間，不合邏輯");
-      return;
-    }
     this.isSend = true;
     localStorage.userData = JSON.stringify(data);
     // var situation = ['angry','worry','pride','surprise'];
@@ -269,7 +271,7 @@ export default React.createClass({
     t.name = data.name;
     t.studno = data.studno;
     localStorage.userData = JSON.stringify(t);
-    open("/"+this.situation+".html","_self");
+    open("/allInOne.html","_self");
   },
   componentDidMount: function() {
     $('.checkbox').checkbox();

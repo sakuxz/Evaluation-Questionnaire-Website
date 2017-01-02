@@ -9,7 +9,7 @@ var mySql = function () {
     host: "localhost",
 		port: "3306",
 		user: 'root',
-		password: 'sakuxzz',
+		password: '',
 		database: 'answer'
 	});
 	this.connection.connect();

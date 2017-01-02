@@ -129,26 +129,39 @@ ReactDOM.render(
 
 function refactorData(n) {
   switch (n) {
+    case 0:
+      return "0次";
+    case 1:
+      return "1-3次";
+    case 4:
+      return "4-6次";
+    case 7:
+      return "7-9次";
     case 10:
-      return "10小時以內";
+      return "10-12次";
+    case 13:
+      return "13次以上";
+
+    case 5:
+      return "5 小時以內";
+    case 6:
+      return "6-10小時";
     case 11:
       return "11-20小時";
     case 21:
       return "21-30小時";
     case 31:
-      return "31-40小時";
-    case 41:
-      return "41小時以上";
-    case 1000:
-      return "1000元以內";
-    case 1001:
-      return "1001元-2000元";
-    case 2001:
-      return "2001元-3000元";
-    case 3001:
-      return "3001元-4000元";
-    case 4001:
-      return "4001元以上";
+      return "31小時以上";
+    case 100:
+      return "100元以內";
+    case 101:
+      return "101元-300元";
+    case 301:
+      return "301元-500元";
+    case 501:
+      return "501元-700元";
+    case 701:
+      return "701元以上";
     default:
 
   }
