@@ -1,0 +1,19 @@
+.ui.container {
+  .show {
+    animation: contentfadein 0.3s backwards;
+  }
+  .check-form {
+    background: #eee;
+    box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.37);
+    margin-bottom: 47px;
+    padding: 1em 1em 1px;
+  }
+}
+
+@keyframes contentfadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+  }
+}
