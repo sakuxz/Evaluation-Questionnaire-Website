@@ -24,6 +24,7 @@ var app = new Vue({
   el: '#app',
   data: {
     open: false,
+    enableOpen: false,
     checkAns: {
       angry: null,
       pride: null,
@@ -78,6 +79,21 @@ var app = new Vue({
     },
   },
   methods: {
+    toggleOpen: function () {
+      if (this.enableOpen)
+        this.open = !this.open;
+      else
+        alert('請先填寫頁面中的問題');
+    },
+    validateSituation: function () {
+      this.enableOpen = true;
+      for (key in this.situation){
+        if (this.situation[key] === null) {
+          this.enableOpen = false;
+          return;
+        }
+      }
+    },
     nextPage: function () {
       if (this.position < 3) {
         this.position++;
@@ -101,6 +117,13 @@ var app = new Vue({
       var data = JSON.parse(localStorage.userData);
       data.situation = 'all_in_one'
       data.ans = [].concat(angryData, worryData, prideData, surpriseData);
+      for (key in this.situation) {
+        data.ans.push({
+          name: key,
+          choose: this.situation[key],
+          title: key+" 情境的評價"
+        });
+      }
       this.isSend = true;
       uploadAns(data, function() {
         localStorage.removeItem("userData");

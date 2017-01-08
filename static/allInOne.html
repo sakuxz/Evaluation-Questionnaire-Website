@@ -580,54 +580,54 @@
 
     <div class="ui form article-content check-form" v-show="checkWorry">
       <h1>在閱讀完四種情境後，請依序排列出對你最有用的餐廳評論文 ：</h1>
-      <p>
+      <p style="color: #2185d0;">
         1->代表最好, 2->代表次好, 3->還可以, 4->不佳
       </p>
 
-      <div class="inline fields">
+      <div>
         <label>讓人失望透頂 CP 值極低的下午茶 ♥Destino 你是我的命運餐廳:</label>
-        <div class="field">
-          <div class="" v-for="i in [1,2,3,4]">
-            <input type="radio" v-model="situation.angry" v-bind:id="'angry' + i" name="angry" v-bind:value="i" />
-            <label v-bind:for="'angry' + i">{{i}}</label>
-          </div>
+        <div class="radio-group">
+          <label v-bind:for="'angry' + i" v-for="i in [1,2,3,4]">
+            <input v-on:change="validateSituation" type="radio" v-model="situation.angry" v-bind:id="'angry' + i" name="angry" v-bind:value="i" />
+            {{i}}
+          </label>
         </div>
       </div>
 
-      <div class="inline fields">
+      <div>
         <label>踩到地雷【Pachamama】團購卷 (怎麼辦?! 還有 4 張卷沒用完):</label>
-        <div class="field">
-          <div class="" v-for="i in [1,2,3,4]">
-            <input type="radio" v-model="situation.worry" v-bind:id="'worry' + i" name="worry" v-bind:value="i" />
-            <label v-bind:for="'worry' + i">{{i}}</label>
-          </div>
+        <div class="radio-group">
+          <label v-bind:for="'worry' + i" v-for="i in [1,2,3,4]">
+            <input v-on:change="validateSituation" type="radio" v-model="situation.worry" v-bind:id="'worry' + i" name="worry" v-bind:value="i" />
+            {{i}}
+          </label>
         </div>
       </div>
 
-      <div class="inline fields">
+      <div>
         <label>【福鼎湯包店】有做功課有差，果然好吃 (得意) ！</label>
-        <div class="field">
-          <div class="" v-for="i in [1,2,3,4]">
-            <input type="radio" v-model="situation.pride" v-bind:id="'pride' + i" name="pride" v-bind:value="i" />
-            <label v-bind:for="'pride' + i">{{i}}</label>
-          </div>
+        <div class="radio-group">
+          <label v-bind:for="'pride' + i" v-for="i in [1,2,3,4]">
+            <input v-on:change="validateSituation" type="radio" v-model="situation.pride" v-bind:id="'pride' + i" name="pride" v-bind:value="i" />
+            {{i}}
+          </label>
         </div>
       </div>
 
-      <div class="inline fields">
+      <div>
         <label>不起眼、卻超出想像好吃的餐廳!!</label>
-        <div class="field">
-          <div class="" v-for="i in [1,2,3,4]">
-            <input type="radio" v-model="situation.surprise" v-bind:id="'surprise' + i" name="surprise" v-bind:value="i" />
-            <label v-bind:for="'surprise' + i">{{i}}</label>
-          </div>
+        <div class="radio-group">
+          <label v-bind:for="'surprise' + i" v-for="i in [1,2,3,4]">
+            <input v-on:change="validateSituation" type="radio" v-model="situation.surprise" v-bind:id="'surprise' + i" name="surprise" v-bind:value="i" />
+            {{i}}
+          </label>
         </div>
       </div>
 
 
     </div>
 
-    <div class="question-form-wrapper">
+    <div class="question-form-wrapper" v-bind:class="{ open: open }">
       <question-form v-show="position == 0"
         hcolor="teal"
         first="true"
@@ -657,13 +657,13 @@
     </div>
 
     <div>
-      <div id="question" class="yellow circular ui icon button fab">
+      <div id="question" v-on:click="toggleOpen" class="yellow circular ui icon button fab">
         <div>
           <i class="edit icon"></i>
         </div>
       </div>
 
-      <div class="pop-up" v-bind:class="{flash: checkWorry}" >填寫問卷</div>
+      <div class="pop-up" v-bind:class="{flash: enableOpen}" >填寫問卷</div>
     </div>
 
   </div>
@@ -677,7 +677,7 @@
 <script src="build/sweetalert.min.js"></script>
 <script src="build/vue.js"></script>
 <script type="text/x-template" id="question-form">
-  <form class="ui form article-content question-form" >
+  <form class="ui form article-content question-form">
     <h1 class="question-form-header inverted segment ui" v-bind:class="hcolor">在『{{ title }}』一文中</h1>
     <div v-for="item in formInfo" class="question-form-body">
       <h3>{{ item.title }}</h3>

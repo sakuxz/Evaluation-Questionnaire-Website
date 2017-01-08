@@ -46,7 +46,7 @@ var DataTable = React.createClass({
                   <th>每次購買金額</th>
                   {
                     this.props.data[0].ans.map(function(e, i) {
-                      return <th key={i} >{e.name}</th>;
+                      return <th title={e.title} key={i} >{e.name}</th>;
                       })
                     }
                   </tr>

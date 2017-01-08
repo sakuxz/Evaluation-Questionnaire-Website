@@ -7,6 +7,10 @@
     box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.37);
     margin-bottom: 47px;
     padding: 1em 1em 1px;
+    .radio-group label {
+      margin: 11px 13px 18px 0;
+      display: inline-block;
+    }
   }
   .question-form-wrapper {
     position: fixed;
@@ -16,6 +20,14 @@
     width: 100%;
     background: rgba(0, 0, 0, 0.58);
     overflow: auto;
+
+    transition: 0.3s all ease-in;
+    visibility: hidden;
+    opacity: 0;
+    &.open {
+      visibility: visible;
+      opacity: 1;
+    }
     .question-form {
       margin: 3.6em auto;
       background: white;
