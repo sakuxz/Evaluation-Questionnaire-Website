@@ -14,10 +14,9 @@ var TableCtn = React.createClass({
         <td>{refactorData(this.props.data.surf_time)}</td>
         <td>{refactorData(this.props.data.shopping_time)}</td>
         <td>{refactorData(this.props.data.shopping_money)}</td>
-        <td>{this.props.data.situation}</td>
         {
           this.props.data.ans.map(function(e, i) {
-            return <td key={i} >{e.value}</td>;
+            return <td key={i} >{e.choose}</td>;
           })
         }
       </tr>
@@ -28,7 +27,7 @@ var TableCtn = React.createClass({
 var DataTable = React.createClass({
   render: function () {
     return(
-      <div>
+      <div style={{'overflow': 'auto', width: '100%'}}>
         {
           (this.props.data.length < 1)?(
             <div className="info-box">
@@ -45,7 +44,6 @@ var DataTable = React.createClass({
                   <th>每周上網時數</th>
                   <th>每周線上購物時數</th>
                   <th>每次購買金額</th>
-                  <th>情境</th>
                   {
                     this.props.data[0].ans.map(function(e, i) {
                       return <th key={i} >{e.name}</th>;
