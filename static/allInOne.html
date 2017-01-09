@@ -573,11 +573,11 @@
         1->代表最好, 2->代表次好, 3->還可以, 4->不佳
       </p>
 
-      <div class="order-item" v-for="(item, index) in situation">
-        <div v-on:click="changeOrder(index)" class="order-index">
-          <span>{{ index + 1 }}</span>
+      <div v-on:click="validateSituation" class="order-item" v-for="(value, key) in situation">
+        <div v-on:click="changeOrder(key)" class="order-index" v-bind:class="{ error: hasDuplicate(value) }">
+          <span>{{ value ? value : '&nbsp' }}</span>
         </div>
-        <h2>{{ item.title }}</h2>
+        <h2>{{ situationInfo[key] }}</h2>
       </div>
 
 
@@ -619,7 +619,7 @@
         </div>
       </div>
 
-      <div class="pop-up" v-bind:class="{flash: checkWorry}" >填寫問卷</div>
+      <div class="pop-up" v-bind:class="{flash: enableOpen}" >填寫問卷</div>
     </div>
 
   </div>
