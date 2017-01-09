@@ -24,19 +24,32 @@ var app = new Vue({
   el: '#app',
   data: {
     open: false,
-    enableOpen: false,
+    // using checkWorry
+    // enableOpen: false,
     checkAns: {
       angry: null,
       pride: null,
       surprise: null,
       worry: null,
     },
-    situation: {
-      angry: null,
-      pride: null,
-      surprise: null,
-      worry: null,
-    },
+    situation: [
+      {
+        type: 'angry',
+        title: '讓人失望透頂 CP 值極低的下午茶 ♥Destino 你是我的命運餐廳',
+      },
+      {
+        type: 'worry',
+        title: '踩到地雷【Pachamama】團購卷 (怎麼辦?! 還有 4 張卷沒用完)',
+      },
+      {
+        type: 'pride',
+        title: '【福鼎湯包店】有做功課有差，果然好吃 (得意) ！',
+      },
+      {
+        type: 'surprise',
+        title: '不起眼、卻超出想像好吃的餐廳!!',
+      },
+    ],
     angryData: angryData,
     worryData: worryData,
     prideData: prideData,
@@ -79,20 +92,17 @@ var app = new Vue({
     },
   },
   methods: {
+    changeOrder: function (idx) {
+      var prevIdx = (idx === 0) ? this.situation.length-1 : idx-1;
+      var t = this.situation[idx];
+      Vue.set(this.situation, idx, this.situation[prevIdx])
+      Vue.set(this.situation, prevIdx, t)
+    },
     toggleOpen: function () {
-      if (this.enableOpen)
+      if (this.checkWorry)
         this.open = !this.open;
       else
         alert('請先填寫頁面中的問題');
-    },
-    validateSituation: function () {
-      this.enableOpen = true;
-      for (key in this.situation){
-        if (this.situation[key] === null) {
-          this.enableOpen = false;
-          return;
-        }
-      }
     },
     nextPage: function () {
       if (this.position < 3) {
@@ -117,10 +127,12 @@ var app = new Vue({
       var data = JSON.parse(localStorage.userData);
       data.situation = 'all_in_one'
       data.ans = [].concat(angryData, worryData, prideData, surpriseData);
-      for (key in this.situation) {
+
+      var situ = processSituationData(this.situation);
+      for (key in situ) {
         data.ans.push({
           name: key,
-          choose: this.situation[key],
+          choose: situ[key],
           title: key+" 情境的評價"
         });
       }
@@ -140,6 +152,19 @@ var app = new Vue({
     }
   }
 });
+
+function processSituationData(data) {
+  var ret = {
+    angry: null,
+    pride: null,
+    surprise: null,
+    worry: null,
+  };
+  data.forEach(function (e, i) {
+    ret[e.type] = i+1;
+  });
+  return ret;
+}
 
 function uploadAns(data, success, fail){
   $.ajax({

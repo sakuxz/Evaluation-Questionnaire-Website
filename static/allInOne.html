@@ -568,49 +568,16 @@
     </div>
 
     <div class="ui form article-content check-form" v-show="checkWorry">
-      <h1>在閱讀完四種情境後，請依序排列出對你最有用的餐廳評論文 ：</h1>
+      <h1>在閱讀完四種情境後，請<b>依序排列</b>出對你最有用的餐廳評論文 ：</h1>
       <p style="color: #2185d0;">
         1->代表最好, 2->代表次好, 3->還可以, 4->不佳
       </p>
 
-      <div>
-        <label>讓人失望透頂 CP 值極低的下午茶 ♥Destino 你是我的命運餐廳:</label>
-        <div class="radio-group">
-          <label v-bind:for="'angry' + i" v-for="i in [1,2,3,4]">
-            <input v-on:change="validateSituation" type="radio" v-model="situation.angry" v-bind:id="'angry' + i" name="angry" v-bind:value="i" />
-            {{i}}
-          </label>
+      <div class="order-item" v-for="(item, index) in situation">
+        <div v-on:click="changeOrder(index)" class="order-index">
+          <span>{{ index + 1 }}</span>
         </div>
-      </div>
-
-      <div>
-        <label>踩到地雷【Pachamama】團購卷 (怎麼辦?! 還有 4 張卷沒用完):</label>
-        <div class="radio-group">
-          <label v-bind:for="'worry' + i" v-for="i in [1,2,3,4]">
-            <input v-on:change="validateSituation" type="radio" v-model="situation.worry" v-bind:id="'worry' + i" name="worry" v-bind:value="i" />
-            {{i}}
-          </label>
-        </div>
-      </div>
-
-      <div>
-        <label>【福鼎湯包店】有做功課有差，果然好吃 (得意) ！</label>
-        <div class="radio-group">
-          <label v-bind:for="'pride' + i" v-for="i in [1,2,3,4]">
-            <input v-on:change="validateSituation" type="radio" v-model="situation.pride" v-bind:id="'pride' + i" name="pride" v-bind:value="i" />
-            {{i}}
-          </label>
-        </div>
-      </div>
-
-      <div>
-        <label>不起眼、卻超出想像好吃的餐廳!!</label>
-        <div class="radio-group">
-          <label v-bind:for="'surprise' + i" v-for="i in [1,2,3,4]">
-            <input v-on:change="validateSituation" type="radio" v-model="situation.surprise" v-bind:id="'surprise' + i" name="surprise" v-bind:value="i" />
-            {{i}}
-          </label>
-        </div>
+        <h2>{{ item.title }}</h2>
       </div>
 
 
@@ -652,7 +619,7 @@
         </div>
       </div>
 
-      <div class="pop-up" v-bind:class="{flash: enableOpen}" >填寫問卷</div>
+      <div class="pop-up" v-bind:class="{flash: checkWorry}" >填寫問卷</div>
     </div>
 
   </div>

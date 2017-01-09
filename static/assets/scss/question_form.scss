@@ -11,6 +11,39 @@
       margin: 11px 13px 18px 0;
       display: inline-block;
     }
+    .order-item {
+      display: table;
+      margin-bottom: 1em;
+      .order-index {
+        padding: 0 15px;
+        span {
+          display: block;
+          width: 1.5em;
+          height: 1.5em;
+          text-align: center;
+          line-height: 1.5;
+          background: white;
+          border-radius: 2px;
+          box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
+          user-select: none;
+          cursor: pointer;
+          &:hover {
+            background: #f9f9f9;
+          }
+          &:active {
+            background: #eee;
+            box-shadow: none;
+          }
+        }
+      }
+      .order-index, h2 {
+        display: table-cell;
+      }
+      h2 {
+        color: #2f3439;
+        font-weight: 200;
+      }
+    }
   }
   .question-form-wrapper {
     position: fixed;
