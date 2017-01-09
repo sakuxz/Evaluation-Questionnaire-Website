@@ -1,5 +1,31 @@
 var prideData = [
   {
+    title: "0. 你認為這個評論文中，作者的感受，最符合下列哪一種情緒?",
+    name: "Pride0",
+    degreeBottom: "null",
+    degreeTop: "null",
+    specialQue: true,
+    options: [
+      {
+        title: "擔心（憂）",
+        value: "worry",
+      },
+      {
+        title: "憤怒（生氣）",
+        value: "angry",
+      },
+      {
+        title: "驚喜",
+        value: "surprise",
+      },
+      {
+        title: "得意（驕傲）",
+        value: "pride",
+      },
+    ],
+    choose: null
+  },
+  {
     title: "1. 你認為作者投入多少努力，來撰寫這篇評論文?",
     name: "Pride1",
     degreeBottom: "非常少努力",
@@ -56,7 +82,7 @@ var prideData = [
     choose: null
   },
   {
-    title: "9. 在閱讀這篇評論文時，我感覺我的心情會隨著內容而高低起伏。",
+    title: "9. 在閱讀這篇評論文時，我能感同身受。",
     name: "Pride9",
     degreeBottom: "非常不同意",
     degreeTop: "非常同意",

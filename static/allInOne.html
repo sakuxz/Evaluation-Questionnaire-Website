@@ -637,15 +637,20 @@
     <h1 class="question-form-header inverted segment ui" v-bind:class="hcolor">在『{{ title }}』一文中</h1>
     <div v-for="item in formInfo" class="question-form-body">
       <h3>{{ item.title }}</h3>
-      <div>
+      <div style="max-width: 413px;" v-if="!item.specialQue">
         <span class="degree-label">{{ item.degreeBottom }}</span>
         <span class="degree-label" style="float:right;">{{ item.degreeTop }}</span>
       </div>
       <p class="degree-radio-wrapper">
-        <span class="" v-for="i in [1,2,3,4,5,6,7]" class="degree-radio">
+        <span v-if="!item.specialQue" class="" v-for="i in [1,2,3,4,5,6,7]" class="degree-radio">
           <label v-bind:for="item.name + i.toString()">
           <input type="radio" v-bind:id="item.name + i.toString()" v-model="item.choose" v-bind:name="item.name" v-bind:value="i" />
           {{i}}</label>
+        </span>
+        <span v-if="item.specialQue" class="" v-for="opt in item.options" class="degree-radio">
+          <label>
+          <input type="radio" v-model="item.choose" v-bind:name="item.name" v-bind:value="opt.value" />
+          {{ opt.title }}</label>
         </span>
       </p>
     </div>
