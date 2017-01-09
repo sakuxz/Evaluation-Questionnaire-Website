@@ -1,12 +1,12 @@
-var express = require('express');
+﻿var express = require('express');
 var mans = require('./model_ans');
 var bodyParser = require('body-parser');
 var app = express();
 
 // var ip = process.env.OPENSHIFT_NODEJS_IP;
 // var port = process.env.OPENSHIFT_NODEJS_PORT | 8080;
-var ip = 'localhost';
-var port = 8000;
+var ip = '0.0.0.0';
+var port = 80;
 
 var boyCount = 0;
 var girlCount = 0;
