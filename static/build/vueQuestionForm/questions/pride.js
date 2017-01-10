@@ -75,7 +75,7 @@ var prideData = [
     choose: null
   },
   {
-    title: "8. 在閱讀這篇評論文時，我感覺也被作者的負面情緒所感染了。",
+    title: "8. 在閱讀這篇評論文時，我感覺也被作者的情緒所感染了。",
     name: "Pride8",
     degreeBottom: "非常不同意",
     degreeTop: "非常同意",
