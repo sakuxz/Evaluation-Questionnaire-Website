@@ -2,9 +2,7 @@
   "name": "Evaluation-Questionnaire-Website",
   "version": "1.0.0",
   "scripts": {
-    "postinstall": "npm i webpack-dev-server -g && npm i webpack -g && npm i nodemon -g",
-    "dev-front": "cd static && webpack",
-    "dev": "nodemon index",
+    "dev": "nodemon index & cd static && webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -29,6 +27,7 @@
     "mongodb": "^2.1.16",
     "mysql": "^2.10.2",
     "node-sass": "^3.2.0",
+    "nodemon": "^1.11.0",
     "open-browser-webpack-plugin": "0.0.1",
     "react": "~0.14.2",
     "react-dom": "~0.14.2",
