@@ -56,7 +56,7 @@ app.get('/ans', function(req, res, next) {
 
 });
 
-var situation = ['angry','worry','pride','surprise'];
+var situation = ['laptop.html?lite=false','laptop.html?lite=true','power_pack.html?lite=false','power_pack.html?lite=true'];
 
 app.get('/situation', function(req, res, next) {
 
@@ -71,8 +71,8 @@ app.get('/situation', function(req, res, next) {
       girlCount = girlCount%situation.length;
     }
     res.send({
-        status: true,
-        data: situ
+      status: true,
+      data: situ
     });
 
 });

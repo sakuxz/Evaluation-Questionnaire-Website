@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properities -->
+  <title>MobileHome</title>
+  <link rel="stylesheet" href="build/semantic.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+  <link rel="stylesheet" href="build/sweetalert.css" />
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="build/bundle/index.css" />
+
+</head>
+
+<body>
+
+  <div class="content-wrapper"></div>
+
+    <div class="ui container" id="product" >
+       <div class="ui grid">
+         <div class="sixteen wide column" style="margin: auto;">
+           <div class="ui grid product-intro">
+             <div class="nine wide column">
+               <div class="swiper-container product-image-slider">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(image,index) in productImages">
+                      <img v-bind:src="image" alt="">
+                    </div>
+                  </div>
+                  <!-- 如果需要分页器 -->
+                  <div class="swiper-pagination"></div>
+               </div>
+               <div class="swiper-container product-image-slider-thumb">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-on:click="slideTo(index)" v-for="(image,index) in productImages">
+                      <img v-bind:src="image" alt="">
+                    </div>
+                  </div>
+                  <!-- 如果需要导航按钮 -->
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+               </div>
+             </div>
+             <div class="seven wide column">
+               <h1>MSI微星 CX62-023 15吋筆電(i5-7200U/940MX/128+1T/4G</h1>
+               <div class="ui bulleted list">
+                  <div class="item">CX62 7QL-023TW</div>
+                  <div class="item">i5-7200U/NVIDIA 940MX-2G</div>
+                  <div class="item">128G M.2 SSD + 1T HDD硬碟</div>
+                  <div class="item">4G Ram DDR4/FHD霧面螢幕</div>
+                  <div class="item">USB 3.0/Audio Boost音效強化</div>
+                  <div class="item">Win 10</div>
+               </div>
+               <div class="price-wrapper">
+                 <p class="recommand-price">
+                   <small>建議售價<del>$29,900</del></small>
+                 </p>
+                 <p class="real-price">
+                   <small>網路價$</small> <span>24,900</span>
+                 </p>
+               </div>
+
+               <!--<div class="addition-product">
+                 <h5>加購商品：</h5>
+                 <div>
+                   <input type="checkbox" name="name" value="">
+                   我要加 $1999 買 微軟 Office 365 個人版
+                 </div>
+               </div>-->
+               <table class="order-detail">
+                 <tr>
+                   <th>數量</th>
+                   <td><div class="ui right labeled input">
+                      <input type="number" placeholder="">
+                      <div class="ui basic label">
+                        個
+                      </div>
+                    </div></td>
+                 </tr>
+                 <tr>
+                   <th>買就送</th>
+                   <td>
+                      <h6 style="margin: 0;">EZstick 微星專用鍵盤膜</h6>
+                      <h6 style="margin: 0;">羅技 遊戲滑鼠G300s</h6>
+                    </td>
+                 </tr>
+               </table>
+             </div>
+           </div>
+          
+          <article class="product-detail">
+            <h3>商品介紹</h3>
+            <hr>
+            <p>
+              特色說明：<br>
+Intel最新第7代Core i5處理器
+防眩光霧面護眼螢幕,Full HD廣視角面板
+內建128G SSD + 1TB硬碟(兼顧效能與容量)
+內建Geforce 940MX 2G獨顯
+獨家Audio Boost音效技術
+獨家Cooler Boost散熱技術
+            </p>
+            <p>
+  規格特色:<br>
+  15.6吋Full HD(1920 x 1080),廣視角面板防眩光霧面護眼螢幕
+  Intel第7代Core i5-7200U雙核心處理器(Base 2.5GHz up to 3.1GHz)(3MB Cache)
+  4GB DDR4-2133,最大可擴充至32GB
+  128GB M.2 SATA SSD + 1TB 2.5吋 HDD
+  NVIDIA GeForce 940MX-DDR3 2GB獨顯
+  Windows 10 Home
+            </p>
+            
+
+            <div class="ui grid">
+              <div class="eight wide column" v-if="!liteVersion" v-for="(image, idx) in introImages">
+                <img v-bind:src="image" style="width: 100%;" alt="">
+              </div>
+              <img v-if="liteVersion" src="https://s.yimg.com/wb/images/B5D0AAFBB9F976A3B473D5AD77B7F23481E16904" alt="">
+            </div>
+
+            <h3 v-if="!liteVersion" style="margin-top: 3em;">來自Mobile01的網友使用心得：</h3>
+            <hr v-if="!liteVersion">
+
+            <div class="ui comments" v-if="!liteVersion">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="https://randomuser.me/api/portraits/thumb/men/28.jpg">
+                </a>
+                <div class="content">
+                  <a class="author">sonic0614</a>
+                  <div class="metadata">
+                    <div class="date">2017-01-05 10:44</div>
+                  </div>
+                  <div class="text">
+                    <p>我使用筆電單純只有文書處理加上網，CX62 7QL-023TW這台規格對我來講是綽綽有餘的</p>
+                  </div>
+                  <div class="actions">
+                    <a class="reply">Reply</a>
+                  </div>
+                </div>
+              </div>
+              <div class="comment">
+                <a class="avatar">
+                  <img src="https://randomuser.me/api/portraits/thumb/women/28.jpg">
+                </a>
+                <div class="content">
+                  <a class="author">asia-sys</a>
+                  <div class="metadata">
+                    <div class="date">2016-12-20 3:25</div>
+                  </div>
+                  <div class="text">
+                    <p>個人用起來覺得不錯,唯一的缺點"就是當四週很安靜時,會聽到散熱風扇的聲音",我想是因為CPU是 i5-6300HQ 。以上供你做參考
+                    </p>
+                  </div>
+                  <div class="actions">
+                    <a class="reply">Reply</a>
+                  </div>
+                </div>
+              </div>
+              <div class="comment">
+                <a class="avatar">
+                  <img src="https://randomuser.me/api/portraits/thumb/women/29.jpg">
+                </a>
+                <div class="content">
+                  <a class="author">etss00ee</a>
+                  <div class="metadata">
+                    <div class="date">2016-11-01 18:50</div>
+                  </div>
+                  <div class="text">
+                    <p>
+  CX62雖然不是電競機種，配備上卻有一點電競風格，周邊方面是超過文書機該有的設計，如果你跟我一樣也是輕度玩家，相信這款CX62不會令您失望。
+                    </p>
+                  </div>
+                  <div class="actions">
+                    <a class="reply">Reply</a>
+                  </div>
+                </div>
+              </div>
+              <div class="comment">
+                <a class="avatar">
+                  <img src="https://randomuser.me/api/portraits/thumb/women/59.jpg">
+                </a>
+                <div class="content">
+                  <a class="author">cxzcxzz123</a>
+                  <div class="metadata">
+                    <div class="date">2017-02-09 16:14:18</div>
+                  </div>
+                  <div class="text">
+                    <p>
+  因為工作的關係，桌電實在不太方便。這台我只有玩楓谷、看YT、文書處理的需求，它對我來說已經非常的夠用!!
+                    </p>
+                  </div>
+                  <div class="actions">
+                    <a class="reply">Reply</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3 style="margin-top: 3em;">商品規格</h3>
+            <hr>
+
+            <table class="ui celled padded table" style="max-width: 500px;margin-top: 2em">
+              <tr><td>品牌</td><td>msi微星</td></tr><tr><td>型號</td><td>CX62 7QL-023TW</td></tr><tr><td>螢幕尺寸(吋)</td><td>15.6吋</td></tr><tr><td>螢幕觸控</td><td>無</td></tr><tr><td>螢幕類型</td><td>霧面</td></tr><tr><td>螢幕解析度類型</td><td>FHD</td></tr><tr><td>螢幕解析度</td><td>1920 x 1080</td></tr><tr><td>顏色</td><td>黑色系</td></tr><tr><td>中央處理器品牌</td><td>Intel</td></tr><tr><td>CPU類型</td><td>i5</td></tr><tr><td>中央處理器型號</td><td>i5-7200U(3M Cache,  2.5 up to 3.1 GHz)</td></tr><tr><td>記憶體類型</td><td>DDR4</td></tr><tr><td>記憶體工作頻率</td><td>2133</td></tr><tr><td>記憶體容量</td><td>4G</td></tr><tr><td>記憶體插槽</td><td>2, 已佔用1</td></tr><tr><td>記憶體最高支援容量</td><td>32G</td></tr><tr><td>硬碟類型</td><td>傳統硬碟, 固態硬碟</td></tr><tr><td>2.5吋傳統硬碟容量</td><td>1TB</td></tr><tr><td>2.5吋傳統硬碟轉數</td><td>無</td></tr><tr><td>固態硬碟 SSD/eMMC</td><td>128GB</td></tr><tr><td>顯示類型</td><td>獨顯</td></tr><tr><td>顯示晶片型號</td><td> 940MX</td></tr><tr><td>顯示卡記憶體類型</td><td>DDR3</td></tr><tr><td>顯示卡記憶體容量(GB)</td><td>2G</td></tr><tr><td>光碟機</td><td>DVD燒錄機</td></tr><tr><td>USB3.1(TypeC)</td><td>1個</td></tr><tr><td>USB 3.0</td><td>2個</td></tr><tr><td>USB 2.0</td><td>1個</td></tr><tr><td>其他連接埠</td><td>HDMI 1.4 x1  MINI DisplayPort 1.2 x1 (支援4K 60Hz &amp; FHD 120Hz)</td></tr><tr><td>讀卡機</td><td>SD(XC/HC)…等格式</td></tr><tr><td>網路攝影機</td><td>HD type (30fps@720p)</td></tr><tr><td>無線網路</td><td>10/100/1000 Gigabit Lan</td></tr><tr><td>重量(kg)</td><td>2.3</td></tr><tr><td>藍牙</td><td>4.0</td></tr><tr><td>作業系統</td><td>Win10 home</td></tr><tr><td>指紋辨識</td><td>無</td></tr><tr><td>電池容量(cell/mAh.)</td><td>6-Cell / 65瓦</td></tr><tr><td>定位</td><td>效能筆電</td></tr><tr><td>保固</td><td>兩年保固</td></tr><tr><td>標準配件</td><td>變壓器+電源線, 滑鼠, 原廠側背包</td></tr><tr><td>尺寸</td><td>383(W) x 260(D) x 27~29(H)mm</td></tr>
+            </table>
+
+          </article>
+
+
+        </div>
+     </div>
+   </div>
+
+  <a id='chat' class='yellow circular ui icon button fab' >
+    <div>
+      <i class="comment icon"></i>
+    </div>
+  </a>
+
+
+</body>
+
+<script src="build/jquery-2.1.4.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<!--<script src="build/semantic.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
+<script src="./build/sweetalert.min.js"></script>
+
+<script>
+  function getParameterByName( name,href ) {
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( href );
+    if( results == null )
+      return "";
+    else
+      return decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+  var productImages = ["https://s.yimg.com/wb/images/5E316DBD3E3B6DDAC7373C5D8DB3F93A0B46BA38", "https://s.yimg.com/wb/images/82014D84F58A5DDA7E78B15C06A3D0FFA46D7586", "https://s.yimg.com/wb/images/2750421758869E92E6E0B1E35B1CC02DF2DA9FB5", "https://s.yimg.com/wb/images/A478EF320772B3CFDF5A1165F771364C2ECF6A38", "https://s.yimg.com/wb/images/0CBA5DBE87558849609B18412478B5172DAC67AA", "https://s.yimg.com/wb/images/6DD2200BFA30500EE75F30C1A68A92C725272B2C", "https://s.yimg.com/wb/images/82136F216F0E90E806752BEA2FBD1317A49B377F", "https://s.yimg.com/wb/images/B5D0AAFBB9F976A3B473D5AD77B7F23481E16904"];
+  var introImages = ["https://s.yimg.com/wb/images/7C7874D2BD4004FBF31C6CC592DEAFADA3A5C116", "https://s.yimg.com/wb/images/2A6B3805CFA3E21C17B31B7D363EC45C4916AE90", "https://s.yimg.com/wb/images/5DEB50A0DE543BD4B2A3C23A821AF9FDB6E91B88", "https://s.yimg.com/wb/images/5E3D645F80EB53A3DBEE1856B1D3C85CC7E63D3B", "https://s.yimg.com/wb/images/0706AA729A808F0FE58F4D124A059023D76162D6", "https://s.yimg.com/wb/images/9A68D9EB8198DBFC415360AB285C166715864A44"];
+  var swiper;      
+  var swiperThumb;
+  var app = new Vue({
+    el: '#product',
+    data: {
+      productImages: productImages,
+      showImage: 0,
+      introImages: introImages,
+      liteVersion: getParameterByName('lite', location.href) == 'true',
+    },
+    mounted: function () {
+      swiper = new Swiper ('.product-image-slider', {
+        // 如果需要分页器
+        pagination: '.swiper-pagination',
+      })        
+      swiperThumb = new Swiper ('.product-image-slider-thumb', {
+        // 如果需要前进后退按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        slidesPerView : 5
+      })
+    },
+    methods: {
+      slideTo: function (idx) {
+        swiper.slideTo(idx);
+      },
+    }
+  })
+</script>
+
+
+</html>

@@ -1,6 +1,9 @@
 @import "./ani.scss";
 body {
 }
+.cloud-zoom-big {
+  transform: scale(1.6) translateX(2em) translateY(2em);
+}
 .ui.container {
   max-width: 960px !important;
 }
@@ -39,7 +42,7 @@ body {
 }
 .product-intro {
   margin-top: 2em !important;
-  img {
+  > img {
     width: 100%;
   }
   .price-wrapper {
@@ -58,6 +61,45 @@ body {
       padding: 11px;
       border-radius: 3px;
     }
+  }
+  .product-image-slider {
+    margin-bottom: 1.5em;
+    img {
+      margin: auto;
+      display: block;
+      margin-bottom: 2em;
+    }
+    &-thumb {
+      img{
+        height:60px;
+        margin-bottom: 2em;
+      }
+    }
+  }
+  .order-detail {
+    margin-top: 1.2em;
+    text-align: left;
+    th {
+      letter-spacing: 2px;
+    }
+    th, td {
+      padding: 6px 12px;
+      padding-left: 0;
+      .product-image-thumb {
+        width: 50px;
+      }
+    }
+  }
+}
+.product-detail {
+  padding: 1.8em 1.6em;
+  margin: 3em;
+  border: 1px solid #e6e6e6;
+  border-radius: 13px;
+  > p {
+    margin: 1em 0 3em;
+    font-size: 16px;
+    line-height: 1.6;
   }
 }
 div.pop-up {

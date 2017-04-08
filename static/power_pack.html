@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properities -->
+  <title>MobileHome</title>
+  <link rel="stylesheet" href="build/semantic.min.css" />
+  <link rel="stylesheet" href="build/sweetalert.css" />
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="build/bundle/index.css" />
+
+</head>
+
+<body>
+
+  <div class="content-wrapper"></div>
+
+    <div class="ui container" id="product" >
+       <div class="ui grid">
+         <div class="sixteen wide column" style="margin: auto;">
+           <div class="ui grid product-intro">
+             <div class="nine wide column">
+               <a zoomWidth="50" v-if="idx === showImage" rel="zoomWidth: 180, zoomHeight: 180" class="cloud-zoom" id="cloudZoom" v-for="(image, idx) in productImages">
+                <img v-bind:src="image" zoomWidth="50" style="margin: auto; display: block;" class="img-responsive">
+               </a>
+             </div>
+             <div class="seven wide column">
+               <h1>aibo GV126K 18000 Plus 行動電源</h1>
+               <div class="ui bulleted list">
+                  <div class="item">已通過BSMI認證合格</div>
+                  <div class="item">金屬拉絲質感，不易沾染指紋</div>
+                  <div class="item">單鍵操作，五段LED電量指示燈</div>
+                  <div class="item">雙孔輸出，可同時充電</div>
+                  <div class="item">安全晶片保護，使用更安心</div>
+               </div>
+               <div class="price-wrapper">
+                 <p class="recommand-price">
+                   <small>建議售價<del>$1,580</del></small>
+                 </p>
+                 <p class="real-price">
+                   <small>網路價$</small> <span>869</span>
+                 </p>
+               </div>
+
+               <!--<div class="addition-product">
+                 <h5>加購商品：</h5>
+                 <div>
+                   <input type="checkbox" name="name" value="">
+                   我要加 $1999 買 微軟 Office 365 個人版
+                 </div>
+               </div>-->
+               <table class="order-detail">
+                 <tr>
+                   <th>數量</th>
+                   <td><div class="ui right labeled input">
+                      <input type="number" placeholder="">
+                      <div class="ui basic label">
+                        個
+                      </div>
+                    </div></td>
+                 </tr>
+                 <tr>
+                   <th>顏色</th>
+                   <td><img v-on:click="showImage = idx" class="product-image-thumb" v-for="(image, idx) in productImages" v-bind:src="image"></td>
+                 </tr>
+               </table>
+             </div>
+           </div>
+          
+          <article class="product-detail">
+            <h3>商品介紹</h3>
+            <hr>
+            <p v-if="!liteVersion">『aibo GV126K 18000 Plus 行動電源』外觀採用鋁合金材質，
+              耀眼金屬拉絲質感，不易沾染指紋，風格簡約精緻，質感加倍提升！
+              擁有雙孔輸出(Total 2.1A MAX)，可同時為兩款手機充電。
+              
+              採用優質鋰聚合物電芯，拒絕大陸電芯或淘汰電芯使用，
+              通過經濟部標準檢驗局BSMI認證合格，給您最好的保障！
+              
+              具有5段LED電量指示燈，輕輕一按即可知道有無電量，
+              單鍵操作，檢測電量更簡單也更方便，擁有安全晶片3重保護
+              (短路+過充+過熱)讓您安全無虞！</p>
+
+            <div class="ui grid product-intro">
+              <div class="eight wide column" v-if="!liteVersion || idx == 0" v-for="(image, idx) in introImages">
+                <img v-bind:src="image" style="width: 100%;" alt="">
+              </div>
+            </div>
+
+            <ul style="font-size: 16px;" v-if="liteVersion">
+              <li>採用鋁合金材質外觀</li>
+              <li>擁有雙孔輸出(Total 2.1A MAX) </li>
+              <li>優質鋰聚合物電芯，通過經濟部標準檢驗局BSMI認證合格</li>
+              <li>單鍵操作，5段LED電量指示燈</li>
+              <li>安全晶片3重(短路+過充+過熱)保護</li>
+            </ul>
+
+            <h3 v-if="!liteVersion" style="margin-top: 3em;">來自Mobile01的網友使用心得：</h3>
+            <hr v-if="!liteVersion">
+
+            <div class="ui comments" v-if="!liteVersion">
+              <div class="comment">
+                <a class="avatar">
+                  <img src="https://randomuser.me/api/portraits/thumb/men/28.jpg">
+                </a>
+                <div class="content">
+                  <a class="author">西爾斯</a>
+                  <div class="metadata">
+                    <div class="date">2017-01-05 10:44</div>
+                  </div>
+                  <div class="text">
+                    <p>外觀的質感真的很優~ 而且大小就和手機一樣，這樣就可以把手機疊在手機上邊充電邊用手機!!</p>
+                  </div>
+                  <div class="actions">
+                    <a class="reply">Reply</a>
+                  </div>
+                </div>
+              </div>
+              <div class="comment">
+                <a class="avatar">
+                  <img src="https://randomuser.me/api/portraits/thumb/women/28.jpg">
+                </a>
+                <div class="content">
+                  <a class="author">白美0724</a>
+                  <div class="metadata">
+                    <div class="date">2016-12-20 3:25</div>
+                  </div>
+                  <div class="text">
+                    <p>
+二年前和M7一起買的用到現在M7電量都衰退很多了aibo GV126K的電量卻沒有衰退感!正常使用中~~ 
+                    </p>
+                  </div>
+                  <div class="actions">
+                    <a class="reply">Reply</a>
+                  </div>
+                </div>
+              </div>
+              <div class="comment">
+                <a class="avatar">
+                  <img src="https://randomuser.me/api/portraits/thumb/women/29.jpg">
+                </a>
+                <div class="content">
+                  <a class="author">etss00ee</a>
+                  <div class="metadata">
+                    <div class="date">2016-11-01 18:50</div>
+                  </div>
+                  <div class="text">
+                    <p>
+超大容量的行動電源，滿足我捉寶、看片跟聊LINE的高電量需求~~ 重點是價錢又便宜!!!就連窮學生的我都可以負擔得起
+                    </p>
+                  </div>
+                  <div class="actions">
+                    <a class="reply">Reply</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3 style="margin-top: 3em;">商品規格</h3>
+            <hr>
+
+            <table class="ui celled padded table" style="max-width: 500px;margin-top: 2em">
+              <tr>
+                <td>電芯容量</td>
+                <td>18000mAh</td>
+              </tr>
+              <tr>
+                <td>產地</td>
+                <td>中國</td>
+              </tr>
+              <tr>
+                <td>保固</td>
+                <td>6個月</td>
+              </tr>
+              <tr>
+                <td>尺寸</td>
+                <td>約 16.1 x 7.4 x 1.6 cm</td>
+              </tr>
+              <tr>
+                <td>重量</td>
+                <td>約 290 g</td>
+              </tr>
+              <tr>
+                <td>電池種類</td>
+                <td>Li-Polymer鋰聚合物電池</td>
+              </tr>
+              <tr>
+                <td>電源輸入</td>
+                <td>DC 5V/2A</td>
+              </tr>
+              <tr>
+                <td>輸出電流</td>
+                <td>DC 5V/1A , DC 5V/2.1A</td>
+              </tr>
+              <tr>
+                <td>充電時間</td>
+                <td>約10小時(依不同充電形式會有所不同) </td>
+              </tr>
+              <tr>
+                <td>額定容量</td>
+                <td>7200mAh</td>
+              </tr>
+            </table>
+
+          </article>
+
+
+        </div>
+     </div>
+   </div>
+
+  <a id='chat' class='yellow circular ui icon button fab' >
+    <div>
+      <i class="comment icon"></i>
+    </div>
+  </a>
+
+
+</body>
+
+<script src="build/jquery-2.1.4.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script src="build/semantic.min.js"></script>
+<script src="./build/sweetalert.min.js"></script>
+
+<script>
+  function getParameterByName( name,href ) {
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec( href );
+    if( results == null )
+      return "";
+    else
+      return decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+  var productImages = ["https://s.yimg.com/wb/images/2602015754558F3C66A5192A5750E07084009D87", "https://s.yimg.com/wb/images/4EFE10118F5B9422091C056B6274F7BDA7876F8E", "https://s.yimg.com/wb/images/53296D2132DA3AEA18186241A5CD1E8B1B9A198B", "https://s.yimg.com/wb/images/86411FD189FE53F8DD3BE0FC11C3392E0264E4DC", "https://s.yimg.com/wb/images/0162DF6FCBDBEA72C582411432C8C74E80A588BB"];
+  var introImages = ["https://s.yimg.com/wb/images/5481476159EF46F1A859294A9E50A27563A3062C", "https://s.yimg.com/wb/images/0CB633A490E8B51E4B5487DBDDAC11FE80577BE8", "https://s.yimg.com/wb/images/EC3DF812668745B3A9DAFEB26D91DF7412EA90DA", "https://s.yimg.com/wb/images/1082A1A02E77B2E95585B57E260C5D4F6DC9B111", "https://s.yimg.com/wb/images/AC6C2D13A43427C445C821A3737F63C5D7283AEA", "https://s.yimg.com/wb/images/51EF0C8D64596129E82DAB4D9A7C4226A9A41FD2", "https://s.yimg.com/wb/images/15DEB4F1CF036B1A391D36DA5E3817683E34E073", "https://s.yimg.com/wb/images/4B52DE4A61DB0B8F73E1D44B6E96AD3F94CBFB01"];
+  var app = new Vue({
+    el: '#product',
+    data: {
+      productImages: productImages,
+      showImage: 0,
+      introImages: introImages,
+      liteVersion: getParameterByName('lite', location.href) == 'true',
+    },
+  })
+</script>
+
+
+</html>

@@ -269,7 +269,7 @@ export default React.createClass({
     t.name = data.name;
     t.studno = data.studno;
     localStorage.userData = JSON.stringify(t);
-    open("/"+this.situation+".html","_self");
+    open("/"+this.situation,"_self");
   },
   componentDidMount: function() {
     $('.checkbox').checkbox();
