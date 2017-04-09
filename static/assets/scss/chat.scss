@@ -1,0 +1,90 @@
+.fade-enter-active, .fade-leave {
+  transition: all .3s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+  transform: translateY(0.5em);
+}
+.chat-room-wrapper {
+  position: fixed;
+  right: 2.4em;
+  bottom: 0;
+  height: 80%; 
+  width: 390px;
+  background-color: rgba(255, 255, 255, 0.95); 
+  border: 1px solid #eee;
+  box-shadow: 0 22px 71px -2px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  z-index: 10000;
+  
+  transition: 0.2s ease-in;
+  visibility: hidden;
+  opacity: 0.6;
+  transform: translateY(2em);
+  &-open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .chat-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 41px;
+    padding: 1em;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 8px;
+      background-color: #ff; /* or add it to the track */
+    }
+    /* Add a thumb */
+    &::-webkit-scrollbar-thumb {
+      background: #eee; 
+      border-radius: 6px;
+    }
+    .chat-bubble {
+      float: left;
+      clear: both;
+      margin: 5px 0;
+      padding: 0.5em 1em 0.6em;
+      background: #41444c;
+      color: white;
+      &-right {
+        float: right;
+        background-color: #3edcbf;
+      }
+    }
+  }
+  .chat-input {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 41px;
+    border-top: 1px solid #e6e6e6;
+    .chat-input-wrapper {
+      height: 100%;
+      margin-right: 80px;
+      input {
+        width: 100%;
+        height: 100%;
+        padding: 0 1em;
+        border: none;
+        font-size: 18px;
+        outline: none;
+      }
+    }
+    > button {
+      width: 80px;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+      float: right;
+      font-size: 1.3em;
+      font-weight: 300;
+    }
+  }
+}

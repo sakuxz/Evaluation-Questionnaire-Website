@@ -56,7 +56,16 @@ app.get('/ans', function(req, res, next) {
 
 });
 
-var situation = ['laptop.html?lite=false','laptop.html?lite=true','power_pack.html?lite=false','power_pack.html?lite=true'];
+var situation = [
+    'laptop.html?lite=false&ans=false',
+    'laptop.html?lite=false&ans=true',
+    'laptop.html?lite=true&ans=false',
+    'laptop.html?lite=true&ans=true',
+    'power_pack.html?lite=false&ans=false',
+    'power_pack.html?lite=false&ans=true',
+    'power_pack.html?lite=true&ans=false',
+    'power_pack.html?lite=true&ans=true',
+    ];
 
 app.get('/situation', function(req, res, next) {
 

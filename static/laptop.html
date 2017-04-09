@@ -212,15 +212,17 @@ Intel最新第7代Core i5處理器
           </article>
 
 
+
         </div>
      </div>
+     <chat-room v-bind:open="openChatRomm" v-bind:ans-type="ansType"></chat-room>
+     <a id='chat' v-show="!openChatRomm" v-on:click.stop="openChatRomm = true" class='yellow circular ui icon button fab' >
+       <div>
+         <i class="comment icon"></i>
+       </div>
+     </a>
    </div>
 
-  <a id='chat' class='yellow circular ui icon button fab' >
-    <div>
-      <i class="comment icon"></i>
-    </div>
-  </a>
 
 
 </body>
@@ -230,6 +232,100 @@ Intel最新第7代Core i5處理器
 <!--<script src="build/semantic.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
 <script src="./build/sweetalert.min.js"></script>
+
+<script type="x-template" id="chat-room">
+  <div class="chat-room-wrapper" v-bind:class="{'chat-room-wrapper-open': open}" v-on:click.stop="">
+    <div class="chat-content">
+      <transition-group name="fade">
+        <div 
+          v-for="chat in chats" 
+          v-bind:key="chat" 
+          class="chat-bubble" 
+          v-bind:class="{ 'chat-bubble-right': chat.isYour }">
+          {{chat.text}}
+        </div>
+      </transition-group>
+    </div>
+    <div class="chat-input">
+      <button v-on:click="addChat" type="button" class="ui primary button">Send</button>
+      <div class="chat-input-wrapper">
+        <input type="text" v-on:keyup.enter="addChat" v-model="inputText">
+      </div>
+    </div>
+  <div class="chat-room-mask"></div>
+  </div>
+  
+</script>
+
+
+<script>
+  var question = [
+    {
+      question: '保固年限',
+      ans: '2 年'
+    },
+    {
+      question: '付款後多久可以拿到',
+      ans: '1 天'
+    },
+  ];
+
+  Vue.component('chat-room', {
+    template: '#chat-room',
+    data: function () {
+      return {
+        chats: [
+          { text: '你好，我是客服，很高興能服務您！', isYour: false, time: new Date().getTime() },
+        ],
+        inputText: ''
+      }
+    },
+    props: ['open', 'ansType'],
+    methods: {
+      addChat: function () {
+        if (!this.inputText) return;
+        this.chats.push({
+          isYour: true,
+          text: this.inputText,
+          time: new Date().getTime(),
+        })
+        this.handleChat(this.inputText);
+        this.inputText = '';
+        $('.chat-content').animate({
+          scrollTop: $('.chat-content')[0].scrollHeight
+        }, 500);
+      },
+      handleChat: function (text) {
+        console.log(text);
+        var isAns = false;
+        for (i in question) {
+          if (text.search(question[i].question) > -1) {
+            if (this.ansType)
+              this.addResponse(question[i].ans);
+            else 
+              this.addResponse('已收到您的提問，會盡快給您答覆');
+            isAns = true;
+            break;
+          }
+        }
+        if (!isAns) {
+          if (this.ansType)
+            this.addResponse('我不太清楚您的問題');
+          else 
+            this.addResponse('已收到您的提問，會盡快給您答覆');
+        } 
+      },
+      addResponse: function (text) {
+        this.chats.push({
+          isYour: false,
+          text: text,
+          time: new Date().getTime(),
+        });
+      }
+    }
+
+  })
+</script>
 
 <script>
   function getParameterByName( name,href ) {
@@ -253,6 +349,8 @@ Intel最新第7代Core i5處理器
       showImage: 0,
       introImages: introImages,
       liteVersion: getParameterByName('lite', location.href) == 'true',
+      ansType: getParameterByName('ans', location.href) == 'true',
+      openChatRomm: false,
     },
     mounted: function () {
       swiper = new Swiper ('.product-image-slider', {
@@ -265,6 +363,9 @@ Intel最新第7代Core i5處理器
         prevButton: '.swiper-button-prev',
         slidesPerView : 5
       })
+      $('body').click(function () {
+        this.openChatRomm = false;
+      }.bind(this))
     },
     methods: {
       slideTo: function (idx) {
