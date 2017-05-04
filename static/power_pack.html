@@ -312,7 +312,8 @@
         chats: [
           { text: '你好，我是客服，很高興能服務您！', isYour: false, time: new Date().getTime() },
         ],
-        inputText: ''
+        inputText: '',
+        matchQuestionCount: 0,
       }
     },
     props: ['open', 'ansType'],
@@ -340,6 +341,7 @@
             else 
               this.addResponse('已收到您的提問，會盡快給您答覆');
             isAns = true;
+            this.matchQuestionCount++;
             break;
           }
         }
@@ -348,7 +350,12 @@
             this.addResponse('我不太清楚您的問題');
           else 
             this.addResponse('已收到您的提問，會盡快給您答覆');
-        } 
+        }
+        if (this.matchQuestionCount === question.length) {
+          app.enableOpen = true;
+          $('#chat').css('animation', 'none');
+          $('#start-question').css('animation', 'flash 2.2s infinite');
+        }
       },
       addResponse: function (text) {
         this.chats.push({
