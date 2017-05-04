@@ -175,12 +175,14 @@ div.mask.open {
   position: fixed;
   bottom: 2em;
   right: 1.3em;
+  max-height: 85vh;
   font-size: 1.55em;
   background: #FFE926;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.18);
   z-index: 5000;
   padding: 15px 15px;
-  overflow: hidden;
+  overflow: auto;
+  // overflow: hidden;
   transition: 1.2s all,0.2s box-shadow;
   will-change: transform;
   transform: translateZ(0);

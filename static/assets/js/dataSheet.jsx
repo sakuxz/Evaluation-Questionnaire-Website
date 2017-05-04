@@ -31,7 +31,7 @@ var TableCtn = React.createClass({
 var DataTable = React.createClass({
   render: function () {
     return(
-      <div>
+      <div className="table-wrapper">
         {
           (this.props.data.length < 1)?(
             <div className="info-box">
