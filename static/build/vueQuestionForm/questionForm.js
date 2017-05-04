@@ -61,15 +61,14 @@ var app = new Vue({
     submitAns: function () {
       if(this.isSend) return;
       var data = JSON.parse(localStorage.userData);
-      data.situation = 'all_in_one'
-      data.ans = [].concat(angryData, worryData, prideData, surpriseData);
-      for (key in this.situation) {
-        data.ans.push({
-          name: key,
-          choose: this.situation[key],
-          title: key+" 情境的評價"
-        });
-      }
+      data.ans = [].concat(p0Data, p1Data, p2Data, p3Data);
+      // for (key in this.situation) {
+      //   data.ans.push({
+      //     name: key,
+      //     choose: this.situation[key],
+      //     title: key+" 情境的評價"
+      //   });
+      // }
       this.isSend = true;
       uploadAns(data, function() {
         localStorage.removeItem("userData");

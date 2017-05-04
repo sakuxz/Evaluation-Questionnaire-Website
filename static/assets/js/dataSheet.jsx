@@ -17,7 +17,7 @@ var TableCtn = React.createClass({
         <td>{this.props.data.situation}</td>
         {
           this.props.data.ans.map(function(e, i) {
-            return <td key={i} >{e.value}</td>;
+            return <td key={i} >{e.choose}</td>;
           })
         }
       </tr>

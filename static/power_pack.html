@@ -310,7 +310,7 @@
     data: function () {
       return {
         chats: [
-          { text: '你好，我是客服，很高興能服務您！', isYour: false, time: new Date().getTime() },
+          { text: '您好，我是線上客服，很高興能為您服務', isYour: false, time: new Date().getTime() },
         ],
         inputText: '',
         matchQuestionCount: 0,
@@ -339,7 +339,7 @@
             if (this.ansType)
               this.addResponse(question[i].ans);
             else 
-              this.addResponse('已收到您的提問，會盡快給您答覆');
+              this.addResponse('謝謝您的提問，客服人員現在不在線上，請留下您的e-mail，我們將儘快回覆您。');
             isAns = true;
             this.matchQuestionCount++;
             break;
@@ -349,7 +349,7 @@
           if (this.ansType)
             this.addResponse('我不太清楚您的問題');
           else 
-            this.addResponse('已收到您的提問，會盡快給您答覆');
+            this.addResponse('謝謝您的提問，客服人員現在不在線上，請留下您的e-mail，我們將儘快回覆您。');
         }
         if (this.matchQuestionCount === question.length) {
           app.enableOpen = true;

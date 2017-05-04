@@ -268,6 +268,7 @@ export default React.createClass({
     var t = JSON.parse(localStorage.userData);
     t.name = data.name;
     t.studno = data.studno;
+    t.situation = this.situation;
     localStorage.userData = JSON.stringify(t);
     open("/"+this.situation,"_self");
   },
