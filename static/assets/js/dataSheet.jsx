@@ -11,9 +11,12 @@ var TableCtn = React.createClass({
         <td>{this.props.data.studno}</td>
         <td>{this.props.data.age}</td>
         <td>{this.props.data.sex}</td>
-        <td>{refactorData(this.props.data.surf_time)}</td>
-        <td>{refactorData(this.props.data.shopping_time)}</td>
-        <td>{refactorData(this.props.data.shopping_money)}</td>
+        <td>{this.props.data.education}</td>
+        <td>{this.props.data.surf_time}</td>
+        <td>{this.props.data.shopping_time}</td>
+        <td>{this.props.data.shopping_money}</td>
+        <td>{this.props.data.income}</td>
+        <td>{this.props.data.social_network_family}</td>
         <td>{this.props.data.situation}</td>
         {
           this.props.data.ans.map(function(e, i) {
@@ -42,9 +45,12 @@ var DataTable = React.createClass({
                   <th>學號</th>
                   <th>年齡</th>
                   <th>性別</th>
-                  <th>每周上網時數</th>
-                  <th>每周線上購物時數</th>
-                  <th>每次購買金額</th>
+                  <th>教育程度</th>
+                  <th>上網時數(每天)</th>
+                  <th>網購次數(每週)</th>
+                  <th>網購金額(平均每次)</th>
+                  <th>每月收入(零用金)</th>
+                  <th>對網活的熟悉程度</th>
                   <th>情境</th>
                   {
                     this.props.data[0].ans.map(function(e, i) {
