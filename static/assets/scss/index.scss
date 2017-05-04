@@ -1,5 +1,6 @@
 @import "./ani.scss";
 @import "./chat.scss";
+@import "./question_form.scss";
 body {
 }
 .cloud-zoom-big {
@@ -276,16 +277,20 @@ div.mask.open {
   visibility: visible;
   transform: translate(0,0);
 }
-#chat.button.fab {
+.button.fab.fab-btn {
   position: fixed;
-  bottom: 5.2em;
+  bottom: 1.8em;
   right: 1.3em;
-  font-size: 1.55em;
-  background: #2196f3;
-  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.18);
   z-index: 5000;
-  padding: 15px 15px;
+  width: 55px;
+  height: 55px;
+  padding: 0 !important;
+  font-size: 1.55em;
+  // background: #2196f3;
+  line-height: 55px;
+  text-align: center;
   overflow: hidden;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.18);
   transition: 1.2s all,0.2s box-shadow;
   will-change: transform;
   transform: translateZ(0);

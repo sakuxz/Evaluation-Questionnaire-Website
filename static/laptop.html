@@ -214,22 +214,55 @@ Intel最新第7代Core i5處理器
 
 
         </div>
-     </div>
-     <chat-room v-bind:open="openChatRomm" v-bind:ans-type="ansType"></chat-room>
-     <a id='chat' v-show="!openChatRomm" v-on:click.stop="openChatRomm = true" class='yellow circular ui icon button fab' >
-       <div>
-         <i class="comment icon"></i>
-       </div>
-     </a>
+      </div>
+      <chat-room v-bind:open="openChatRomm" v-bind:ans-type="ansType"></chat-room>
+      <a id='chat' v-show="!openChatRomm" v-on:click.stop="openChatRomm = true" class='yellow circular ui icon button fab fab-btn' style="bottom: 5em;">
+        <div>
+          <i class="comment icon"></i>
+        </div>
+      </a>
+
+      <a id="start-question" class='blue circular ui icon button fab fab-btn'>
+        <div>
+          <i class="edit icon"></i>
+        </div>
+      </a>
    </div>
 
+  <div id="app" class="question-form-wrapper" v-bind:class="{ open: open }" @click="toggleOpen">
+    <question-form v-show="position == 0"
+      hcolor="olive"
+      first="true"
+      title="看完網頁之後你覺得"
+      v-bind:form-info="p0Data"
+      v-bind:prev-page="prevPage"
+      v-bind:next-page="nextPage"></question-form>
+    <question-form v-show="position == 1"
+      hcolor="teal"
+      title="我認為 這個網站在產品資訊的呈現方式上"
+      v-bind:form-info="p1Data"
+      v-bind:prev-page="prevPage"
+      v-bind:next-page="nextPage"></question-form>
+    <question-form v-show="position == 2"
+      hcolor="blue"
+      title="當我在跟購物網站互動時，我感覺"
+      v-bind:form-info="p2Data"
+      v-bind:prev-page="prevPage"
+      v-bind:next-page="nextPage"></question-form>
+    <question-form v-show="position == 3"
+      hcolor="yellow"
+      title="當我決定在這個網站購物時，根據它的資訊呈現方式以及互動型式"
+      v-bind:form-info="p3Data"
+      v-bind:prev-page="prevPage"
+      v-bind:next-page="nextPage"></question-form>
+  </div>
 
 
 </body>
 
 <script src="build/jquery-2.1.4.min.js"></script>
 <script src="https://unpkg.com/vue"></script>
-<!--<script src="build/semantic.min.js"></script>-->
+<script src="build/semantic.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
 <script src="./build/sweetalert.min.js"></script>
 
@@ -322,6 +355,13 @@ Intel最新第7代Core i5處理器
           time: new Date().getTime(),
         });
       }
+    },
+    mounted: function () {
+      $('#product .table').visibility({
+        onTopVisible: function(calculations) {
+          $('#chat').css('animation', 'flash 2.2s infinite');
+        },
+      });
     }
 
   })
@@ -374,6 +414,38 @@ Intel最新第7代Core i5處理器
     }
   })
 </script>
+
+<script src="build/vue.js"></script>
+<script type="text/x-template" id="question-form">
+  <form class="ui form article-content question-form" v-on:click.stop="">
+    <h1 class="question-form-header inverted segment ui" v-bind:class="hcolor">在『{{ title }}』一文中</h1>
+    <div v-for="item in formInfo" class="question-form-body">
+      <h3>{{ item.title }}</h3>
+      <div style="max-width: 413px;" v-if="!item.specialQue">
+        <span class="degree-label">{{ item.degreeBottom }}</span>
+        <span class="degree-label" style="float:right;">{{ item.degreeTop }}</span>
+      </div>
+      <p class="degree-radio-wrapper">
+        <span v-if="!item.specialQue" class="" v-for="i in [1,2,3,4,5,6,7]" class="degree-radio">
+          <label v-bind:for="item.name + i.toString()">
+          <input type="radio" v-bind:id="item.name + i.toString()" v-model="item.choose" v-bind:name="item.name" v-bind:value="i" />
+          {{i}}</label>
+        </span>
+        <span v-if="item.specialQue" class="" v-for="opt in item.options" class="degree-radio">
+          <label>
+          <input type="radio" v-model="item.choose" v-bind:name="item.name" v-bind:value="opt.value" />
+          {{ opt.title }}</label>
+        </span>
+      </p>
+    </div>
+    <div class="question-form-footer">
+      <button v-if="first !== 'true'" v-on:click.prevent="prevPage" class="ui teal basic button">上一頁</button>
+      <button v-on:click.prevent="shouldGoNext" class="ui teal button">{{ (last === 'true')?'送出問券':'下一頁'}}</button>
+    </div>
+  </form>
+</script>
+<script src="build/vueQuestionForm/questions/questions.js"></script>
+<script src="build/vueQuestionForm/questionForm.js"></script>
 
 
 </html>
