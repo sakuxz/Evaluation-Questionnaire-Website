@@ -227,13 +227,20 @@ Intel最新第7代Core i5處理器
         </div>
       </div>
       <chat-room v-bind:open="openChatRomm" v-bind:ans-type="ansType"></chat-room>
-      <a id='chat' v-show="!openChatRomm" v-on:click.stop="openChatRomm = true" class='yellow circular ui icon button fab fab-btn' style="bottom: 5em;">
-        <div>
-          <i class="comment icon"></i>
-        </div>
-      </a>
+     
+      <img
+        id="chat"
+        src="image/chat.png" 
+        alt="chat room link" 
+        v-show="!openChatRomm" 
+        v-on:click.stop="openChatRomm = true"
+        style="
+          position: fixed;
+          bottom: 117px;
+          right: -11px;
+          z-index: 10000;">
 
-      <a id="start-question" class='blue circular ui icon button fab fab-btn'>
+      <a id="start-question" class='blue circular ui icon button fab fab-btn' style="display: none;">
         <div>
           <i class="edit icon"></i>
         </div>
@@ -306,11 +313,11 @@ Intel最新第7代Core i5處理器
   var question = [
     {
       question: '保固年限',
-      ans: '2 年'
+      ans: '謝謝您的提問，它的保固期間是 2 年'
     },
     {
       question: '付款後多久可以拿到',
-      ans: '1 天'
+      ans: '1 天就到貨嘍～'
     },
   ];
 
@@ -363,6 +370,7 @@ Intel最新第7代Core i5處理器
         if (this.matchQuestionCount === question.length) {
           app.enableOpen = true;
           $('#chat').css('animation', 'none');
+          $('#start-question').css('display', 'block')
           $('#start-question').css('animation', 'flash 2.2s infinite');
         }
       },
