@@ -19,6 +19,17 @@
 
 <body>
 
+  <div class="begin-story show">
+    <div class="begin-story-content">
+      <p>
+        在進入各實驗情境前，請您先閱讀以下情境故事，<br>
+        小亮離家到外地讀書，為了方便在假日時能夠將學校報告帶回家完成，因此考慮購買一台筆記型電腦。<br>
+        如果你/妳是小亮，正在搜尋適合的筆記型電腦 
+      </p>
+      <div class="ui inverted button">下一步</div>
+    </div>
+  </div>
+
   <div class="content-wrapper"></div>
 
     <div class="ui container" id="product" >
@@ -412,7 +423,10 @@ Intel最新第7代Core i5處理器
       })
       $('body').click(function () {
         this.openChatRomm = false;
-      }.bind(this))
+      }.bind(this));
+      $('.begin-story .button').click(function () {
+        $('.begin-story').removeClass('show');
+      });
     },
     methods: {
       slideTo: function (idx) {

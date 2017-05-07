@@ -6,6 +6,16 @@
     background: white;
   }
 }
+@keyframes slidein {
+  0% {
+    transform: translateY(0.5em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 @keyframes fadeout {
   0% {
     background: white;

@@ -18,6 +18,18 @@
 
 <body>
 
+  <div class="begin-story show">
+    <div class="begin-story-content">
+      <p>
+        在進入各實驗情境前，請您先閱讀以下情境故事， <br>
+小亮是一位重度依賴手機的大學生，舉凡買電影票、網購、跟同學聊Line，聽音樂，找美食，都不能沒有手機的幫忙。
+但是，每到五點快下課時，手機的電池總是不夠用，於是小亮心想該是添購行動電源來維持手機電池續航力的時候了。<br>
+如果你/妳是小亮，正在搜尋適合的行動電源 
+      </p>
+      <div class="ui inverted button">下一步</div>
+    </div>
+  </div>
+
   <div class="content-wrapper"></div>
 
     <div class="ui container" id="product" >
@@ -403,6 +415,9 @@
       $('body').click(function () {
         this.openChatRomm = false;
       }.bind(this))
+      $('.begin-story .button').click(function () {
+        $('.begin-story').removeClass('show');
+      });
     },
   })
 </script>

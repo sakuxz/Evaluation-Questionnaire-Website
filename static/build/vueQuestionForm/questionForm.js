@@ -38,7 +38,7 @@ var app = new Vue({
       if (this.enableOpen)
         this.open = !this.open;
       else
-        alert('請先與客服聯繫');
+        alert('請先與客服聯繫喔~');
     },
     nextPage: function () {
       if (this.position < 3) {
