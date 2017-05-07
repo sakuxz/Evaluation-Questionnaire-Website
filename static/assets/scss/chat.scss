@@ -17,21 +17,29 @@
   overflow: hidden;
   z-index: 10000;
   
-  transition: 0.2s ease-in;
+  transition: 0.3s ease-in;
   visibility: hidden;
-  opacity: 0.6;
-  transform: translateY(2em);
+  // opacity: 0.6;
+  transform: translateY(100%);
   &-open {
     visibility: visible;
-    opacity: 1;
+    // opacity: 1;
     transform: translateY(0);
+  }
+  > h2 {
+    background: #ce0a0a;
+    padding: 11px 15px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
   }
   .chat-content {
     position: absolute;
-    top: 0;
+    top: 39px;
     left: 0;
     right: 0;
-    bottom: 41px;
+    bottom: 48px;
     padding: 1em;
     overflow: auto;
     &::-webkit-scrollbar {
@@ -62,18 +70,22 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 41px;
+    height: 48px;
     border-top: 1px solid #e6e6e6;
     .chat-input-wrapper {
       height: 100%;
       margin-right: 80px;
+      padding: 7px 0 7px 1em;
+      background: #eee;
       input {
         width: 100%;
         height: 100%;
         padding: 0 1em;
-        border: none;
-        font-size: 18px;
+        border: 1px solid #dfdfdf;
         outline: none;
+        border-radius: 100px;
+        background: white;
+        font-size: 16px;
       }
     }
     > button {
@@ -85,6 +97,8 @@
       float: right;
       font-size: 1.3em;
       font-weight: 300;
+      background: #eeeeee !important;
+      color: #FF5722 !important;
     }
   }
 }
