@@ -20,6 +20,9 @@ var TableCtn = React.createClass({
         <td>{this.props.data.situation}</td>
         {
           this.props.data.ans.map(function(e, i) {
+            if (e.name === 'time') {
+              return <td key={i} >{ moment(e.choose).format('mm:ss') }</td>;
+            }
             return <td key={i} >{e.choose}</td>;
           })
         }

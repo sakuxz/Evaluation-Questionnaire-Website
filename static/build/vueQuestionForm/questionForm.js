@@ -69,9 +69,14 @@ var app = new Vue({
       //     title: key+" 情境的評價"
       //   });
       // }
+      data.ans.push({
+        name: "time",
+        choose: moment().diff(parseInt(localStorage.startTime))
+      });
       this.isSend = true;
       uploadAns(data, function() {
         localStorage.removeItem("userData");
+        localStorage.removeItem("startTime");
         swal({
             title: "Good job!",
             text: "實驗到此結束，謝謝您的協助",

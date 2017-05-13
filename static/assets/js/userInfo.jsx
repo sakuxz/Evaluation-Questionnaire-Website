@@ -360,6 +360,7 @@ export default React.createClass({
   },
   situation: null,
   goSitu: function() {
+    localStorage.startTime = new Date().getTime();
     var data = $(this.refs.optForm).serializeObject();
     var t = JSON.parse(localStorage.userData);
     t.name = data.name;

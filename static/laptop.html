@@ -269,6 +269,7 @@ Intel最新第7代Core i5處理器
       v-bind:next-page="nextPage"></question-form>
     <question-form v-show="position == 3"
       hcolor="yellow"
+      last="true"
       title="當我決定在這個網站購物時，根據它的資訊呈現方式以及互動型式"
       v-bind:form-info="p3Data"
       v-bind:prev-page="prevPage"
@@ -446,6 +447,7 @@ Intel最新第7代Core i5處理器
 </script>
 
 <script src="build/vue.js"></script>
+<script src="build/moment.js"></script>
 <script type="text/x-template" id="question-form">
   <form class="ui form article-content question-form" v-on:click.stop="">
     <h1 class="question-form-header inverted segment ui" v-bind:class="hcolor">{{ title }}</h1>
