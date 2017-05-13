@@ -251,7 +251,7 @@ Intel最新第7代Core i5處理器
     <question-form v-show="position == 0"
       hcolor="olive"
       first="true"
-      title="看完網頁之後你覺得"
+      title="在瀏覽完上述的實驗情境後，請您根據您的實際感受，回答下列問題"
       v-bind:form-info="p0Data"
       v-bind:prev-page="prevPage"
       v-bind:next-page="nextPage"></question-form>
@@ -448,7 +448,7 @@ Intel最新第7代Core i5處理器
 <script src="build/vue.js"></script>
 <script type="text/x-template" id="question-form">
   <form class="ui form article-content question-form" v-on:click.stop="">
-    <h1 class="question-form-header inverted segment ui" v-bind:class="hcolor">在『{{ title }}』一文中</h1>
+    <h1 class="question-form-header inverted segment ui" v-bind:class="hcolor">{{ title }}</h1>
     <div v-for="item in formInfo" class="question-form-body">
       <h3>{{ item.title }}</h3>
       <div style="max-width: 413px;" v-if="!item.specialQue">

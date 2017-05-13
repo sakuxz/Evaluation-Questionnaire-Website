@@ -295,7 +295,7 @@ export default React.createClass({
 
         <div className="opt-modal" ref="model" >
           <form className="ui form" ref="optForm" >
-            <h4 className="ui dividing header">選填資料 (小禮物發放用)</h4>
+            <h4 className="ui dividing header">選填資料</h4>
             <div className="field">
               <label>個人資訊</label>
               <div className="fields">
